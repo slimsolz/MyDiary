@@ -133,6 +133,7 @@ text-align: left;
 	background-color: blue;
   padding: 0px;
   color: white;
+  cursor: pointer;
 }
 
 .passlnk a {
