@@ -125,7 +125,8 @@ header a {
 }
 
 .inputdiv{
-text-align: left;
+	text-align: left;
+	color: #1f6b84;
 }
 
 .inputdiv input{
@@ -133,6 +134,8 @@ text-align: left;
 	height: 40px;
 	padding: 20px;
 	border: 1px solid blue;
+	border-radius: 5px;
+	margin-bottom: 5px;
 }
 
 .inputdiv input[type=submit]{
@@ -142,6 +145,7 @@ text-align: left;
   padding: 0px;
   color: white;
   cursor: pointer;
+
 }
 
 .passlnk a {
