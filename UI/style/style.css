@@ -64,14 +64,21 @@ header {
 header a {
 	text-decoration: none;
 	margin-right: 30px;
-	margin-left: 30px;
 	color: white;
+}
+
+header h2 {
+	margin-left: 30px;
 }
 
 .headerLinks {
 	margin-top: 5px;
 	text-align: right;
 	list-style: none;
+}
+
+.headerLinks li {
+	display: inline-block;
 }
 
 .headerLinks li a{
