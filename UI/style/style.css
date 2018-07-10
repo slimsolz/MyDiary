@@ -217,6 +217,10 @@ footer {
 	.headerLinks {
 		margin-top: 0px;
 	}
+
+	#entriesList {
+	  height: 100px;
+	}
 } 
 
 /*.sidenav ul li:last-child {
