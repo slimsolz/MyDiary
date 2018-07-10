@@ -106,6 +106,14 @@ header a {
   height: 450px;
 }
 
+.signinbox {
+  max-width: 500px;
+  background-color: white;
+  margin: 70px auto 70px auto;
+  text-align: center;
+  height: 550px;
+}
+
 .logindiv {
 	height: 80px;
 	background-color: lightgrey;
@@ -117,7 +125,8 @@ header a {
 }
 
 .inputdiv{
-text-align: left;
+	text-align: left;
+	color: #1f6b84;
 }
 
 .inputdiv input{
@@ -125,6 +134,8 @@ text-align: left;
 	height: 40px;
 	padding: 20px;
 	border: 1px solid blue;
+	border-radius: 5px;
+	margin-bottom: 5px;
 }
 
 .inputdiv input[type=submit]{
@@ -133,6 +144,8 @@ text-align: left;
 	background-color: blue;
   padding: 0px;
   color: white;
+  cursor: pointer;
+
 }
 
 .passlnk a {
