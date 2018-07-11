@@ -221,6 +221,14 @@ footer {
 	.mainentries article {
 		margin: 10px auto;
 	}
+
+	#story img{
+		max-width: 100%;
+		vertical-align: top;
+		float: none;
+		padding-bottom: 15px;
+	}
+
 } 
 
 figure {
@@ -252,39 +260,48 @@ figure {
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: red;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #story {
+	/*padding: 5px;*/
 	word-wrap: break-word;
 	word-spacing: 3px;
 }
 
-#new_link{
-
+#story img{
+	padding-right: 20px;
 }
-#new_link a {
+
+#new_link a, .modal_buttons a, #delete {
 	text-decoration: none;
 	border: 1px solid;
 	padding: 10px;
 	float: right;
+	margin: 10px;
 }
+
+#delete {
+	background-color: red;
+	color: white;
+}
+

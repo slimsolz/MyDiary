@@ -69,14 +69,15 @@
             <div id="content">
               <article class="col-2 col-s-4">
                 <a href="" class="link">
-                <figure>
-                  <img src="images/miss_u.jpg" alt="Missing you" width="100%">
-                  <figcaption>
-                    <h2>Wont Give Up</h2>
-                    <p>I wont give up on us, even if the stars get rough im giving u all my luv</p>
-                  </figcaption>
-                </figure>
+                  <figure>
+                    <img src="images/miss_u.jpg" alt="Missing you" width="100%">
+                    <figcaption>
+                      <h2>Wont Give Up</h2>
+                      <p>I wont give up on us, even if the stars get rough im giving u all my luv</p>
+                    </figcaption>
+                  </figure>
                 </a>
+
               </article>
 
               <article class="col-2 col-s-4">
@@ -216,8 +217,13 @@
               <!-- Modal content -->
               <div class="modal-content">
                 <span class="close">&times;</span>
-                <img src="images/miss_u.jpg" width="100%" height="300">
                 <p id="story"></p>
+                <div class="row">
+                  <div class="modal_buttons">
+                    <a href="edit.html">Edit</a>
+                    <button id="delete">Delete</button>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- Modal Ends -->
@@ -232,35 +238,6 @@
       &copy; 2018 | MyDiary
     </footer>
 
-    <script type="text/javascript">
-      let modal = document.getElementById('myModal');
-      // opens the modal
-      let link = document.getElementsByClassName("link");      
-      // Get the <span> element that closes the modal
-      let span = document.getElementsByClassName("close")[0];
-      let story = document.getElementById('story');
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-          modal.style.display = "none";
-      }
-      function showEntry(e) {
-        e.preventDefault();    
-        innerstory = 'For so long, I wished for the day. The day that our love would find its way. From my heart and into your soul, The feeling so strong, I had no control. When then that day came, when I found you again, I vowed never to make the same mistake. I knew I would never let you go, For my life is now complete in a way I cannot show. For eternity I will spend making you believe, You are the sole reason that I breathe. My life is yours, my hopes and desires too. Until my dying day, my heart is reserved just for you. You are everything I could ever need and more, More than I deserve or would dare wish for. You are my baby, my angel, my dream girl I\'m thankful every day that you are my whole world. For the time I spend with you, my heart truly sings My one, My only, My EVERYTHING. Source: https://www.familyfriendpoems.com/poem/my-one-my-only-my-everything...For so long, I wished for the day. The day that our love would find its way. From my heart and into your soul, The feeling so strong, I had no control. When then that day came, when I found you again, I vowed never to make the same mistake. I knew I would never let you go, For my life is now complete in a way I cannot show. For eternity I will spend making you believe, You are the sole reason that I breathe. My life is yours, my hopes and desires too. Until my dying day, my heart is reserved just for you. You are everything I could ever need and more, More than I deserve or would dare wish for. You are my baby, my angel, my dream girl I\'m thankful every day that you are my whole world. For the time I spend with you, my heart truly sings My one, My only, My EVERYTHING. Source: https://www.familyfriendpoems.com/poem/my-one-my-only-my-everythingFor so long, I wished for the day. The day that our love would find its way. From my heart and into your soul, The feeling so strong, I had no control. When then that day came, when I found you again, I vowed never to make the same mistake. I knew I would never let you go, For my life is now complete in a way I cannot show. For eternity I will spend making you believe, You are the sole reason that I breathe. My life is yours, my hopes and desires too. Until my dying day, my heart is reserved just for you. You are everything I could ever need and more, More than I deserve or would dare wish for. You are my baby, my angel, my dream girl I\'m thankful every day that you are my whole world. For the time I spend with you, my heart truly sings My one, My only, My EVERYTHING. Source: https://www.familyfriendpoems.com/poem/my-one-my-only-my-everything...For so long, I wished for the day. The day that our love would find its way. From my heart and into your soul, The feeling so strong, I had no control. When then that day came, when I found you again, I vowed never to make the same mistake. I knew I would never let you go, For my life is now complete in a way I cannot show. For eternity I will spend making you believe, You are the sole reason that I breathe. My life is yours, my hopes and desires too. Until my dying day, my heart is reserved just for you. You are everything I could ever need and more, More than I deserve or would dare wish for. You are my baby, my angel, my dream girl I\'m thankful every day that you are my whole world. For the time I spend with you, my heart truly sings My one, My only, My EVERYTHING. Source: https://www.familyfriendpoems.com/poem/my-one-my-only-my-everything';
-        story.innerHTML = innerstory;
-        modal.style.display = "block";
-      }
-
-      for (var i = 0; i < link.length; i++) {
-        link[i].onclick = showEntry;
-      }
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-
-    </script>
+    <script type="text/javascript" src="script/displayEntry.js"></script>
   </body>
 </html>
