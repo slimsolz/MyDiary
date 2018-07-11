@@ -199,10 +199,6 @@ footer {
   background-color: red;
 }
 
-.mainentries {
-	border: 1px solid red;
-}
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 	.logo, .linkdiv {
@@ -221,10 +217,19 @@ footer {
 	#entriesList {
 	  height: 100px;
 	}
+
+	.mainentries article {
+		margin: 10px auto;
+	}
 } 
 
-/*.sidenav ul li:last-child {
-  border-bottom: 0;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-}*/
+figure {
+	border: 1px solid green;
+	padding: 10px;
+	text-align: center;
+}
+
+ article a {
+	text-decoration: none;
+	color: inherit;
+}
