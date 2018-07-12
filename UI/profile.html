@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDiary</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+  </head>
+  <body> 
+    <header class="row">
+      <div class="logo col-6">
+        <h2><a href="index.html"><span class="logoA">My</span>Diary</a></h2>
+      </div>  
+      <div class="linkdiv col-6">
+        <ul class="headerLinks">
+          <li><a href="entries.html">Entries</a></li>
+          <li><a href="index.html">Log Out</a></li>
+        </ul>
+      </div>      
+    </header> 
+
+    <div id="profilewrapper">
+      <div class="row">
+        <div class="col-12">
+          <section class="profile">
+            <fieldset>
+              <legend>Profile</legend>
+              <form class="profile_form">
+              <div>
+                <label for="firstname">First Name:</label>
+                <input type="text" name="firstname" id="firstname" class="profile-input">
+              </div>
+              <div>
+                <label for="lastname">Last Name:</label>
+                <input type="text" name="lastname" id="lastname" class="profile-input">
+              </div>
+              <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" class="profile-input">
+              </div>
+              <div>
+                <label for="sex">Sex:</label>
+                <input type="radio" name="sex" id="male" value="M"> Male
+                <input type="radio" name="sex" id="female" value="F"> Female
+              </div>
+              <div>
+                <label for="About">About me:</label>
+                <textarea class="profile-input"></textarea>
+              </div>
+              <div>
+                <input type="submit" name="save" value="Save" class="form-input">
+              </div>
+            </form>
+            </fieldset>
+
+            <fieldset>
+              <legend>Entries Details</legend>
+              <p>Total Enteries: 340</p>
+              <p>Total Enteries Deleted: 40</p>
+            </fieldset>
+
+            <fieldset>
+              <legend>Setting</legend>
+              <p>Get notifications via email to write an entry</p>
+              <input type="radio" name="notification" value="12">12 PM Daily
+              <input type="radio" name="notification" value=""> Weekly
+              <input type="radio" name="notification" value=""> Once a month
+              <input type="radio" name="notification" checked value="0"> None
+            </fieldset>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2018 | MyDiary
+    </footer>
+
+    <script type="text/javascript" src=""></script>
+  </body>
+</html>

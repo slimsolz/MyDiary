@@ -8,6 +8,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
+/*body {
+  font-family: Handlee;
+}
+*/
 /*clear floats after the columns*/
 .row::after {
   content: "";
@@ -58,7 +62,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 header {
   border-bottom: 1px solid black;
-  background-color: red;
+  background-color: blue;
 }
 
 header a {
@@ -85,7 +89,7 @@ header h2 {
   border: 1px solid white;
   padding: 10px;
   color: white;
-  background-color: red
+  background-color: blue
 }
 
 .logo a:hover {
@@ -94,9 +98,9 @@ header h2 {
 }
 
 .headerLinks li a:hover {
-  border: 1px solid red;
+  border: 1px solid blue;
   background: white;
-  color: red;
+  color: blue;
   padding: 10px;
 }
 
@@ -169,12 +173,13 @@ footer {
 	text-align: center;
 	padding: 10px;
 	font-weight: bold;
-	background-color: black;
-	color: white;
+	background-color: white;
+  border-top: 1px solid blue;
+	color: blue;
 }
 
 #entriesList {
-  border: 1px solid black;
+  border: 1px solid blue;
   margin-bottom: 10px;
   height: 350px;
   overflow-y: scroll;
@@ -188,7 +193,14 @@ footer {
 .sidenav li{
   list-style: none;
   padding: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid blue;
+  text-align: center;
+}
+
+.sidenav li:hover{
+  border: 2px solid blue;
+  font-size: 18px;
+  font-weight: bolder;
 }
 
 .sidenav a{
@@ -196,7 +208,7 @@ footer {
 }
 
 .sidenav li:hover {
-  background-color: red;
+  background-color: skyblue;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -232,12 +244,24 @@ footer {
 } 
 
 figure {
-	border: 1px solid green;
+	border: 1px solid blue;
 	padding: 10px;
 	text-align: center;
 }
 
- article a {
+figure:hover {
+  background-color: lightgrey;
+}
+
+figcaption h2 {
+  font-size: 14px;
+}
+
+figcaption p {
+  font-size: 12px;
+}
+
+article a {
 	text-decoration: none;
 	color: inherit;
 }
@@ -269,10 +293,12 @@ figure {
 
 /* The Close Button */
 .close {
-  color: red;
+  color: white;
+  background-color: red;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  border: 1px solid red;
 }
 
 .close:hover,
@@ -330,8 +356,42 @@ figure {
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+.profile-input {
+  display: inline-block;
+  width: 50%;
+  height: 30px;
+  padding: 6px 12px;
+  margin: 10px;
+  font-size: 20px;
+  line-height: 1.428571429;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: none;
+  border-left: 1px solid #9AC0CD;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+legend {
+  border: 1px solid blue;
+  padding: 3px;
+}
+
 #new_form textarea {
 	height: 457px;
+}
+
+#edit_form textarea {
+  height: 457px;
+}
+
+.profile_form textarea {
+  height: 300px;
+  display: block;
 }
 
 #new_form input[type=submit] {
@@ -339,4 +399,32 @@ figure {
 	border: 1px solid #9AC0CD;
 }
 
+#edit_form input[type=submit] {
+  background: #9AC0CD;
+  border: 1px solid #9AC0CD;
+}
+
+.profile_form input[type=submit] {
+  background: #9AC0CD;
+  border: 1px solid #9AC0CD;
+}
+
+#profilewrapper {
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(../images/profile_bg.jpg) no-repeat;
+  background-size: cover;
+}
+
+.profile {
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid blue;
+  padding: 10px;
+  background-color: white;
+}
+
+fieldset {
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid blue;
+}
 
