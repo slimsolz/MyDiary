@@ -8,6 +8,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
+/*body {
+  font-family: Handlee;
+}
+*/
 /*clear floats after the columns*/
 .row::after {
   content: "";
@@ -94,9 +98,9 @@ header h2 {
 }
 
 .headerLinks li a:hover {
-  border: 1px solid red;
+  border: 1px solid blue;
   background: white;
-  color: red;
+  color: blue;
   padding: 10px;
 }
 
@@ -175,7 +179,7 @@ footer {
 }
 
 #entriesList {
-  border: 1px solid black;
+  border: 1px solid blue;
   margin-bottom: 10px;
   height: 350px;
   overflow-y: scroll;
@@ -189,7 +193,14 @@ footer {
 .sidenav li{
   list-style: none;
   padding: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid blue;
+  text-align: center;
+}
+
+.sidenav li:hover{
+  border: 2px solid blue;
+  font-size: 18px;
+  font-weight: bolder;
 }
 
 .sidenav a{
@@ -197,7 +208,7 @@ footer {
 }
 
 .sidenav li:hover {
-  background-color: red;
+  background-color: skyblue;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -233,12 +244,24 @@ footer {
 } 
 
 figure {
-	border: 1px solid green;
+	border: 1px solid blue;
 	padding: 10px;
 	text-align: center;
 }
 
- article a {
+figure:hover {
+  background-color: lightgrey;
+}
+
+figcaption h2 {
+  font-size: 14px;
+}
+
+figcaption p {
+  font-size: 12px;
+}
+
+article a {
 	text-decoration: none;
 	color: inherit;
 }
@@ -358,8 +381,12 @@ legend {
   padding: 3px;
 }
 
-#new_form textarea, {
+#new_form textarea {
 	height: 457px;
+}
+
+#edit_form textarea {
+  height: 457px;
 }
 
 .profile_form textarea {
@@ -370,6 +397,11 @@ legend {
 #new_form input[type=submit] {
 	background: #9AC0CD;
 	border: 1px solid #9AC0CD;
+}
+
+#edit_form input[type=submit] {
+  background: #9AC0CD;
+  border: 1px solid #9AC0CD;
 }
 
 .profile_form input[type=submit] {
