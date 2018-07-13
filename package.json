@@ -4,6 +4,8 @@
   "description": "\u001b[2~\u001b[2~An online journal where users can pen down their thoughts and feelings",
   "main": "app.js",
   "scripts": {
+    "start-dev": "nodemon server/app.js --exec babel-node",
+    "build": "babel server -d server/dist --ignore server/dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +29,7 @@
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "nodemon": "^1.18.1"
   }
 }
