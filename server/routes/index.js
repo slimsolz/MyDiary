@@ -1,4 +1,5 @@
 import express from 'express';
+import UserController from '../controllers/userController';
 
 const router = express.Router();
 
@@ -9,5 +10,7 @@ router.get('/', (req, res, next) => {
     message: 'Welcome to my diary app'
   });
 });
+
+router.post('/users', UserController.createUser);
 
 export default router;

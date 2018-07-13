@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/slimsolz/MyDiary.svg?branch=develop)](https://travis-ci.org/slimsolz/MyDiary)
-
+[![Build Status](https://travis-ci.org/slimsolz/MyDiary.svg?branch=server)](https://travis-ci.org/slimsolz/MyDiary)
 [![Coverage Status](https://coveralls.io/repos/github/slimsolz/MyDiary/badge.svg?branch=ch-setup-travis-ci-159013746)](https://coveralls.io/github/slimsolz/MyDiary?branch=ch-setup-travis-ci-159013746)
 
 # MyDiary
