@@ -1,0 +1,24 @@
+{
+  "name": "mydiary",
+  "version": "1.0.0",
+  "description": "\u001b[2~\u001b[2~An online journal where users can pen down their thoughts and feelings",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slimsolz/MyDiary.git"
+  },
+  "author": "Odumah Solomon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slimsolz/MyDiary/issues"
+  },
+  "homepage": "https://github.com/slimsolz/MyDiary#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  }
+}
