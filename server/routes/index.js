@@ -1,5 +1,6 @@
 import express from 'express';
 import UserController from '../controllers/userController';
+import Middleware from '../middlewares/index';
 
 const router = express.Router();
 
@@ -11,6 +12,6 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.post('/users', UserController.createUser);
+router.post('/users', Middleware.validateUser, UserController.createUser);
 
 export default router;

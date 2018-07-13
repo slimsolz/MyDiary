@@ -7,11 +7,11 @@ chai.use(chaiHttp);
 
 const User = {
   id: 9,
-  email: 'userexample@gmail.com',
-  password: 'examplepass'
+  email: 'usertest@ymail.com',
+  password: 'quicktest'
 };
 
-describe('GET /', () => {
+describe('POST /users', () => {
   it('should return 201 and a create a user', (done) => {
     chai.request(app)
       .post('/api/v1/users')
@@ -19,7 +19,7 @@ describe('GET /', () => {
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body.status).to.be.eql('success');
-        expect(res.body.message).to.be.equal('user created successfully');
+        expect(res.body.message).to.be.eql('user created successfully');
         expect(res.body.user).to.be.an('object');
         done();
       });
@@ -32,7 +32,7 @@ describe('GET /', () => {
       .end((err, res) => {
         expect(res).to.have.status(409);
         expect(res.body.status).to.be.eql('error');
-        expect(res.body.message).to.be.equal('user already exists');
+        expect(res.body.message).to.be.eql('user already exists');
         done();
       });
   });
