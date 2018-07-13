@@ -9,3 +9,5 @@ router.get('/', (req, res, next) => {
     message: 'Welcome to my diary app'
   });
 });
+
+export default router;
