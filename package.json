@@ -6,7 +6,7 @@
   "scripts": {
     "start-dev": "nodemon server/app.js --exec babel-node",
     "build": "babel server -d server/dist --ignore server/dist",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
     "test": "nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register"
   },
   "nyc": {
