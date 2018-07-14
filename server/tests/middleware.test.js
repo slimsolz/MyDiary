@@ -36,3 +36,70 @@ describe('validate Users', () => {
       });
   });
 });
+
+describe('validate Entry', () => {
+  it('should return 400 if title not provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/entries')
+      .send({
+        id: 10,
+        title: '',
+        category: 'category',
+        image: 'image',
+        story: 'story'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if category not provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/entries')
+      .send({
+        id: 10,
+        title: 'title',
+        category: '',
+        image: 'image',
+        story: 'story'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if image not provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/entries')
+      .send({
+        id: 10,
+        title: 'title',
+        category: 'category',
+        image: '',
+        story: 'story'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if story not provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/entries')
+      .send({
+        id: 10,
+        title: 'title',
+        category: 'category',
+        image: 'image',
+        story: ''
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+});

@@ -25,7 +25,7 @@ export default class EntryController {
     db.entry.push(newEntry);
     return res.status(201).json({
       status: 'success',
-      message: 'Entry saves successfully',
+      message: 'Entry saved successfully',
       entry: newEntry
     });
   }
