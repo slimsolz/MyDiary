@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.post('/users', Middleware.validateUser, UserController.createUser);
+router.post('/auth/signup', Middleware.validateUser, UserController.signup);
+router.post('/auth/signin', Middleware.validateUser, UserController.signin);
 
 export default router;

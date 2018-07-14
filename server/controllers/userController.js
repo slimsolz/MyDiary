@@ -1,7 +1,7 @@
 import db from '../models/dummy-db';
 
 export default class UserController {
-  static createUser(req, res) {
+  static signup(req, res) {
     const {
       email, password
     } = req.body;
@@ -25,6 +25,26 @@ export default class UserController {
       status: 'success',
       message: 'user created successfully',
       user: newUser
+    });
+  }
+
+  static signin(req, res) {
+    const {
+      email, password
+    } = req.body;
+
+    const userfound = db.users.find(user => (user.email === email) && (user.password === password));
+    if (!userfound) {
+      return res.status(401).json({
+        status: 'error',
+        message: 'username or password incorrect'
+      });
+    }
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'logged in successfully',
+      user: userfound
     });
   }
 }

@@ -8,7 +8,9 @@
 	"extends": "airbnb",
 	"rules": {
 		"no-console": 0,
-		"comma-dangle": 0
+		"comma-dangle": 0,
+		"no-restricted-globals": 0,
+		"no-unused-vars": [1, { "argsIgnorePattern": "res|next|^err" }]
 	},
 	"parserOptions": {
 		"ecmaVersion": 6

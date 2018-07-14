@@ -8,10 +8,10 @@ chai.use(chaiHttp);
 describe('validate Users', () => {
   it('should return 400 if email not provided', (done) => {
     chai.request(app)
-      .post('/api/v1/users')
+      .post('/api/v1/auth/signup')
       .send({
         id: 10,
-        email: 'solz',
+        email: '',
         password: 'winiefknorn'
       })
       .end((err, res) => {
@@ -23,7 +23,7 @@ describe('validate Users', () => {
 
   it('should return 400 if password not provided', (done) => {
     chai.request(app)
-      .post('/api/v1/users')
+      .post('/api/v1/auth/signup')
       .send({
         id: 10,
         email: 'slim@gmail.com',
