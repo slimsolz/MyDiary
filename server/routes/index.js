@@ -19,5 +19,6 @@ router.post('/auth/signin', Middleware.validateUser, UserController.signin);
 
 /* Entry */
 router.post('/entries', Middleware.validateEntry, EntryController.addEntry);
+router.put('/entries/:id', Middleware.validateEntry, EntryController.updateEntry);
 
 export default router;

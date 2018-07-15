@@ -29,4 +29,35 @@ export default class EntryController {
       entry: newEntry
     });
   }
+
+  static updateEntry(req, res) {
+    const entryId = parseInt(req.params.id, 10);
+    const {
+      title, category, image, story
+    } = req.body;
+
+    const oldEntryIndex = db.entry.findIndex(entry => entry.id === entryId);
+
+    if (oldEntryIndex === -1) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Entry not found'
+      });
+    }
+
+    const updatedEntry = {
+      id: entryId,
+      title,
+      category,
+      image,
+      story
+    };
+
+    db.entry.splice(oldEntryIndex, 1, updatedEntry);
+    return res.json({
+      status: 'success',
+      message: 'Entry updated successfully',
+      updated_entry: updatedEntry
+    });
+  }
 }
