@@ -5,9 +5,15 @@ export default class EntryController {
     const {
       title, category, image, story
     } = req.body;
+    const dbLength = db.entry.length;
+    let id = 1;
+
+    if (dbLength >= 1) {
+      id = db.entry[dbLength - 1].id + 1;
+    }
 
     const newEntry = {
-      id: db.entry[db.entry.length - 1].id + 1,
+      id,
       title,
       category,
       image,
@@ -77,6 +83,23 @@ export default class EntryController {
     return res.json({
       status: 'success',
       message: 'Entry deleted successfully',
+    });
+  }
+
+  static getAllEntries(req, res) {
+    const dbLength = db.entry.length;
+
+    if (dbLength < 1) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'No entry available'
+      });
+    }
+
+    return res.json({
+      status: 'success',
+      message: 'All entries',
+      entries: db.entry
     });
   }
 }
