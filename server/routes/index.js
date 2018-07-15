@@ -19,6 +19,7 @@ router.post('/auth/signin', Middleware.validateUser, UserController.signin);
 
 /* Entry */
 router.post('/entries', Middleware.validateEntry, EntryController.addEntry);
-router.put('/entries/:id', Middleware.validateEntry, EntryController.updateEntry);
+router.put('/entries/:id', Middleware.validateParams, Middleware.validateEntry, EntryController.updateEntry);
+router.delete('/entries/:id', Middleware.validateParams, EntryController.deleteEntry);
 
 export default router;
