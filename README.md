@@ -5,3 +5,35 @@
 
 # MyDiary
 MyDiary is an online journal where users can pen down their thoughts and feelings.
+
+### Features
+- Sign up: `POST api/v1/caterer/signup`
+- Sign in: `POST api/v1/caterer/signin`
+- List all entries: `GET api/v1/entries`
+- show a single entry: `GET api/v1/entries/<entryId>`
+- Add new entry: `POST api/v1/entries`
+- Update an entry: `PUT api/v1/entries/<entryId>`
+- Delete an entry: `DELETE api/v1/entries/<entryId>`
+
+#### Dependencies
+- Express JS: Web application framework for Node.js.
+- Body-Parser: Parse incoming request bodies in a middleware before your handlers, available under the req.body property
+
+#### Dev Dependencies
+- Coveralls: Helps to show which part code is not covered by test suite
+- Eslint: Linting utility for JavaScript and JSX
+- Babel: The compiler for writing next generation JavaScript.
+- Mocha & Chai: Testing the Web Application
+- Chai: TDD assertion library for node
+- Nodemon: Utility that will monitor for any changes in your source and automatically restart your server.
+
+### How To Contribute
+- Fork the project & clone locally.
+- Branch for each separate piece of work `$ git checkout -b <branch-name>`
+- Do the work, write good commit messages.
+- Push to your origin repository.
+- Create a new PR in GitHub.
+- Wait for approval.
+
+#### Author
+[Odumah Solomon](https://twitter.com/slimsolz)
