@@ -102,4 +102,22 @@ export default class EntryController {
       entries: db.entry
     });
   }
+
+  static getEntry(req, res) {
+    const entryId = parseInt(req.params.id, 10);
+
+    const entryfound = db.entry.filter(entry => entry.id === entryId);
+    if (entryfound.length < 1) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Entry does not exist'
+      });
+    }
+
+    return res.json({
+      status: 'success',
+      message: 'Entry reterived',
+      entry: entryfound
+    });
+  }
 }

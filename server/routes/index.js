@@ -22,5 +22,6 @@ router.post('/entries', Middleware.validateEntry, EntryController.addEntry);
 router.put('/entries/:id', Middleware.validateParams, Middleware.validateEntry, EntryController.updateEntry);
 router.delete('/entries/:id', Middleware.validateParams, EntryController.deleteEntry);
 router.get('/entries', EntryController.getAllEntries);
+router.get('/entries/:id', Middleware.validateParams, EntryController.getEntry);
 
 export default router;

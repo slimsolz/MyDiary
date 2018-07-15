@@ -115,6 +115,31 @@ describe('DELETE /entries/:id', () => {
   });
 });
 
+describe('GET /entries/:id', () => {
+  it('should return 200 and get a single entry', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries/2')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.be.eql('success');
+        expect(res.body.message).to.be.eql('Entry reterived');
+        expect(res.body.entry).to.be.an('array');
+        done();
+      });
+  });
+
+  it('should return 400 and error message', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries/99')
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        expect(res.body.message).to.be.eql('Entry does not exist');
+        done();
+      });
+  });
+});
+
 describe('GET /entries', () => {
   it('should return 200 and delete an entry', (done) => {
     chai.request(app)
