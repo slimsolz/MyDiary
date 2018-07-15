@@ -116,8 +116,8 @@ export default class EntryController {
 
     return res.json({
       status: 'success',
-      message: 'All entries',
-      entries: entryfound
+      message: 'Entry reterived',
+      entry: entryfound
     });
   }
 }
