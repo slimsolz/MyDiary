@@ -6,18 +6,10 @@ export default class EntryController {
       title, category, image, story
     } = req.body;
     const dbLength = db.entry.length;
-    let id = 1;
-
-    if (dbLength >= 1) {
-      id = db.entry[dbLength - 1].id + 1;
-    }
+    const id = (dbLength >= 1) ? db.entry[dbLength - 1].id + 1 : 1;
 
     const newEntry = {
-      id,
-      title,
-      category,
-      image,
-      story
+      id, title, category, image, story
     };
 
     const entryfound = db.entry.find(entry => entry.title.toLowerCase() === title.toLowerCase());
