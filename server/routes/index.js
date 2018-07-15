@@ -21,5 +21,6 @@ router.post('/auth/signin', Middleware.validateUser, UserController.signin);
 router.post('/entries', Middleware.validateEntry, EntryController.addEntry);
 router.put('/entries/:id', Middleware.validateParams, Middleware.validateEntry, EntryController.updateEntry);
 router.delete('/entries/:id', Middleware.validateParams, EntryController.deleteEntry);
+router.get('/entries', EntryController.getAllEntries);
 
 export default router;
