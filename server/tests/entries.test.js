@@ -77,6 +77,20 @@ describe('PUT /entries/:id', () => {
   });
 });
 
+describe('GET /entries', () => {
+  it('should return 200 and get all entries', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.be.eql('success');
+        expect(res.body.message).to.be.eql('All entries');
+        expect(res.body.entries).to.be.an('array');
+        done();
+      });
+  });
+});
+
 describe('DELETE /entries/:id', () => {
   it('should return 200 and delete an entry', (done) => {
     chai.request(app)
@@ -96,6 +110,33 @@ describe('DELETE /entries/:id', () => {
         expect(res).to.have.status(404);
         expect(res.body.status).to.be.eql('error');
         expect(res.body.message).to.be.eql('Entry not found');
+        done();
+      });
+  });
+});
+
+describe('GET /entries', () => {
+  it('should return 200 and delete an entry', (done) => {
+    chai.request(app)
+      .delete('/api/v1/entries/2')
+      .end((err, res) => {
+        done();
+      });
+  });
+  it('should return 200 and delete an entry', (done) => {
+    chai.request(app)
+      .delete('/api/v1/entries/3')
+      .end((err, res) => {
+        done();
+      });
+  });
+  it('should return 400 and error message', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries')
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        expect(res.body.message).to.be.eql('No entry available');
         done();
       });
   });
