@@ -60,4 +60,23 @@ export default class EntryController {
       updated_entry: updatedEntry
     });
   }
+
+  static deleteEntry(req, res) {
+    const entryId = parseInt(req.params.id, 10);
+
+    const oldEntryIndex = db.entry.findIndex(entry => entry.id === entryId);
+
+    if (oldEntryIndex === -1) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Entry not found'
+      });
+    }
+
+    db.entry.splice(oldEntryIndex, 1);
+    return res.json({
+      status: 'success',
+      message: 'Entry deleted successfully',
+    });
+  }
 }
