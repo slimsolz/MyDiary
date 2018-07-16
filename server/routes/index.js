@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
 /* user */
 router.post('/auth/signup', Middleware.validateUser, UserController.signup);
 router.post('/auth/signin', Middleware.validateUser, UserController.signin);
-router.put('/user/account/:id', UserController.updateProfile);
+router.put('/user/account/:id', Middleware.validateParams, Middleware.validateProfie, UserController.updateProfile);
 
 /* Entry */
 router.post('/entries', Middleware.validateEntry, EntryController.addEntry);
