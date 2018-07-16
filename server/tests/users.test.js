@@ -70,3 +70,42 @@ describe('POST /auth/signin', () => {
       });
   });
 });
+
+describe('PUT /user/account/:id', () => {
+  it('should return 200 and a update a user\'s profile', (done) => {
+    chai.request(app)
+      .put('/api/v1/user/account/1')
+      .send({
+        firstname: 'John',
+        lastname: 'Doe',
+        sex: 'M',
+        bio: 'my bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eql('success');
+        expect(res.body.message).to.eql('User profile updated successfully');
+        expect(res.body.user_profile).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should return 404 and an error message', (done) => {
+    chai.request(app)
+      .put('/api/v1/user/account/99')
+      .send({
+        firstname: 'John',
+        lastname: 'Doe',
+        sex: 'M',
+        bio: 'my bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.eql('error');
+        expect(res.body.message).to.eql('User not found');
+        done();
+      });
+  });
+});
