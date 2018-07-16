@@ -110,7 +110,7 @@ describe('PUT /user/account/:id', () => {
   });
 });
 
-describe('PUT /user/account/:id', () => {
+describe('GET /user/account/:id', () => {
   it('should return 200 and show a user\'s profile', (done) => {
     chai.request(app)
       .get('/api/v1/user/account/1')
