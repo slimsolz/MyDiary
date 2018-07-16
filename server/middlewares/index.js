@@ -40,6 +40,46 @@ export default class Middleware {
     });
   }
 
+  static validateProfie(req, res, next) {
+    const {
+      password, firstname, lastname, sex, bio, notification
+    } = req.body;
+    const errors = {};
+
+    if (password && validator.isEmpty(password.trim())) {
+      errors.password = 'password cannot be empty';
+    }
+
+    if (firstname && !isNaN(firstname)) {
+      errors.firstname = 'Enter a valid firstname';
+    }
+
+    if (lastname && !isNaN(lastname)) {
+      errors.lastname = 'Enter a valid lastname';
+    }
+
+    if (sex && !isNaN(sex)) {
+      errors.sex = 'Enter a valid sex';
+    }
+
+    if (notification && !isNaN(notification)) {
+      errors.notification = 'Enter a valid notification';
+    }
+
+    if (bio && !isNaN(bio)) {
+      errors.bio = 'Enter a valid bio';
+    }
+
+    if (isEmpty(errors)) {
+      return next();
+    }
+
+    return res.status(400).json({
+      status: 'error',
+      errors
+    });
+  }
+
   static validateEntry(req, res, next) {
     const errors = {};
     const {

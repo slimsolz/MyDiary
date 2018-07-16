@@ -47,4 +47,57 @@ export default class UserController {
       user: userfound
     });
   }
+
+  static updateProfile(req, res) {
+    const userId = parseInt(req.params.id, 10);
+    const {
+      password, firstname, lastname, sex, bio, notification
+    } = req.body;
+
+    const userfound = db.users.find(user => user.id === userId);
+    const userfoundIndex = db.users.findIndex(user => user.id === userId);
+
+    if (userfoundIndex === -1) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'User not found'
+      });
+    }
+
+    const updatedUser = {
+      id: userId,
+      email: userfound.email,
+      password: password || userfound.password,
+      firstname,
+      lastname,
+      sex,
+      bio,
+      notification
+    };
+
+    db.users.splice(userfoundIndex, 1, updatedUser);
+    return res.status(200).json({
+      status: 'success',
+      message: 'User profile updated successfully',
+      user_profile: updatedUser
+    });
+  }
+
+  static viewProfile(req, res) {
+    const userId = parseInt(req.params.id, 10);
+
+    const userfound = db.users.filter(user => user.id === userId);
+    if (userfound.length < 1) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'User not found'
+      });
+    }
+
+    return res.json({
+      status: 'success',
+      message: 'User profile reterived',
+      user: userfound
+    });
+  }
 }

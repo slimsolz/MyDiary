@@ -3,12 +3,22 @@ const db = [];
 db.users = [{
   id: 1,
   email: 'user1@gmail.com',
-  password: 'user1password'
+  password: 'user1password',
+  firstname: '',
+  lastname: '',
+  sex: '',
+  bio: '',
+  notification: ''
 },
 {
   id: 2,
   email: 'user2@gmail.com',
-  password: 'user2password'
+  password: 'user2password',
+  firstname: '',
+  lastname: '',
+  sex: '',
+  bio: '',
+  notification: ''
 }];
 
 db.entry = [{
