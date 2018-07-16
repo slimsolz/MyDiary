@@ -82,4 +82,22 @@ export default class UserController {
       user_profile: updatedUser
     });
   }
+
+  static viewProfile(req, res) {
+    const userId = parseInt(req.params.id, 10);
+
+    const userfound = db.users.filter(user => user.id === userId);
+    if (userfound.length < 1) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'User not found'
+      });
+    }
+
+    return res.json({
+      status: 'success',
+      message: 'User profile reterived',
+      user: userfound
+    });
+  }
 }
