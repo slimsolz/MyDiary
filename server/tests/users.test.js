@@ -109,3 +109,28 @@ describe('PUT /user/account/:id', () => {
       });
   });
 });
+
+describe('PUT /user/account/:id', () => {
+  it('should return 200 and show a user\'s profile', (done) => {
+    chai.request(app)
+      .get('/api/v1/user/account/1')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eql('success');
+        expect(res.body.message).to.eql('User profile reterived');
+        expect(res.body.user).to.be.an('array');
+        done();
+      });
+  });
+
+  it('should return 400 and an error message', (done) => {
+    chai.request(app)
+      .get('/api/v1/user/account/99')
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.eql('error');
+        expect(res.body.message).to.eql('User not found');
+        done();
+      });
+  });
+});
