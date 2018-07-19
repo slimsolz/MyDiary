@@ -9,6 +9,8 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 ### Features
 - Sign up: `POST api/v1/auth/signup`
 - Sign in: `POST api/v1/auth/signin`
+- Update profile: `PUT api/v1/user/account/me`
+- View profile: `GET api/v1/user/account/me`
 - List all entries: `GET api/v1/entries`
 - show a single entry: `GET api/v1/entries/<entryId>`
 - Add new entry: `POST api/v1/entries`
