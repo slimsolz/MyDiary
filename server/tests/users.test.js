@@ -123,11 +123,11 @@ describe('GET /user/account/:id', () => {
       });
   });
 
-  it('should return 400 and an error message', (done) => {
+  it('should return 404 and an error message', (done) => {
     chai.request(app)
       .get('/api/v1/user/account/99')
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(404);
         expect(res.body.status).to.eql('error');
         expect(res.body.message).to.eql('User not found');
         done();

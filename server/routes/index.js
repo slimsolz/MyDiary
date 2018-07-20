@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
   res.json({
     status: 'success',
-    message: 'Welcome to my diary app'
+    message: 'Welcome to My Diary App'
   });
 });
 
@@ -25,5 +25,33 @@ router.put('/entries/:id', Middleware.validateParams, Middleware.validateEntry, 
 router.delete('/entries/:id', Middleware.validateParams, EntryController.deleteEntry);
 router.get('/entries', EntryController.getAllEntries);
 router.get('/entries/:id', Middleware.validateParams, EntryController.getEntry);
+
+router.get('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'error',
+    message: '404 Page not found'
+  });
+});
+
+router.post('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'error',
+    message: '404 Page not found'
+  });
+});
+
+router.put('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'error',
+    message: '404 Page not found'
+  });
+});
+
+router.delete('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'error',
+    message: '404 Page not found'
+  });
+});
 
 export default router;
