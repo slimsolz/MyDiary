@@ -88,7 +88,7 @@ export default class UserController {
 
     const userfound = db.users.filter(user => user.id === userId);
     if (userfound.length < 1) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: 'error',
         message: 'User not found'
       });

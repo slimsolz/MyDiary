@@ -100,7 +100,7 @@ export default class EntryController {
 
     const entryfound = db.entry.filter(entry => entry.id === entryId);
     if (entryfound.length < 1) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: 'error',
         message: 'Entry does not exist'
       });

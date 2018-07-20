@@ -5,7 +5,6 @@ import app from '../app';
 const { expect } = chai;
 chai.use(chaiHttp);
 
-// homepage
 describe('GET /', () => {
   it('should return 200 and a welcome message', (done) => {
     chai.request(app)
