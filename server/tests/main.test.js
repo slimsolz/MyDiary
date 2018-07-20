@@ -12,7 +12,7 @@ describe('GET /', () => {
       .get('/api/v1/')
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.be.equal('Welcome to my diary app');
+        expect(res.body.message).to.be.equal('Welcome to My Diary App');
         done();
       });
   });
