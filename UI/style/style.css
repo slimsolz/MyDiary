@@ -477,3 +477,7 @@ fieldset {
   border: 1px solid blue;
 }
 
+#wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+}
