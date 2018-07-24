@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyDiary</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+  <!--   <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet"> -->
   </head>
   <body> 
     <header class="row">
@@ -25,7 +27,7 @@
           <section class="col-12 mainentries"><!-- Mainenteries -->
             <div class="row">
               <div id="new_link" class="col-12">
-                <a href="new_entry.html">New Entry</a>
+                <a href="new_entry.html" class="">New Entry</a>
               </div>
               <div id="content">
                 <article class="col-4 col-m-2 col-s-4">
@@ -225,6 +227,7 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
+                  <h1 id="story-title"></h1>
                   <p id="story"></p>
                   <div class="row">
                     <div class="modal_buttons">

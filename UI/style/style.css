@@ -361,17 +361,18 @@ article a {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 70%;
+  height: 500px;
+  overflow: auto;
+  margin-top: 80px;
 }
 
 /* The Close Button */
 .close {
-  color: white;
-  background-color: red;
+  color: red;
   float: right;
   font-size: 28px;
   font-weight: bold;
-  border: 1px solid red;
 }
 
 .close:hover,
@@ -384,11 +385,20 @@ article a {
 #story {
 	/*padding: 5px;*/
 	word-wrap: break-word;
-	word-spacing: 3px;
+	word-spacing: 2px;
+  font-family: "Rock Salt";
 }
 
 #story img{
 	padding-right: 20px;
+}
+
+.modal-content h1 {
+  font-size: 2em;
+  text-align: center;
+  padding-bottom: 5px;
+  font-family: 'Rock Salt', serif;
+  text-shadow: 4px 4px 4px #aaa;
 }
 
 #new_link a, .modal_buttons a, #delete {
