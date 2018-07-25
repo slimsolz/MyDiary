@@ -3,6 +3,8 @@ node_js:
   - "stable"
 install:
   - npm install
+services: 
+  - postgresql
 env:
   global:
     - CC_TEST_REPORTER_ID=a3bcf65776a813611a5bf6d456f621975d7adf4bc2babc9b570a400025e9b269
