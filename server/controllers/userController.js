@@ -5,7 +5,7 @@ import db from '../dbconnect/db-connect';
 require('dotenv').config();
 
 export default class UserController {
-  /*static signup(req, res) {
+  static signup(req, res) {
     const {
       email, password
     } = req.body;
@@ -33,6 +33,6 @@ export default class UserController {
             });
           });
       });
-  }*/
+  }
 }
 
