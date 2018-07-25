@@ -40,6 +40,7 @@ export default class Middleware {
     });
   }
 
+  /*
   static validateProfie(req, res, next) {
     const {
       password, firstname, lastname, sex, bio, notification
@@ -79,6 +80,7 @@ export default class Middleware {
       errors
     });
   }
+  */
 
   static validateEntry(req, res, next) {
     const errors = {};

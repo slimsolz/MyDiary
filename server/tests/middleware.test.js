@@ -116,7 +116,7 @@ describe('validate params', () => {
   });
 });
 
-describe('validate User profile', () => {
+/* describe('validate User profile', () => {
   it('should return 400 if password is invalid', (done) => {
     chai.request(app)
       .put('/api/v1/user/account/1')
@@ -215,3 +215,4 @@ describe('validate User profile', () => {
       });
   });
 });
+*/

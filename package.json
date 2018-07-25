@@ -8,7 +8,10 @@
     "start-dev": "nodemon server/app.js --exec babel-node",
     "build": "babel server -d server/dist --ignore server/dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
-    "test": "nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register"
+    "pretest": "npm run db-build-test",
+    "test": "cross-env NODE_ENV=test SECRET=testsecret nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register",
+    "db-build-test": "psql -U postgres -f mydiary_test.sql",
+    "db-build": "psql -U postgres -f mydiary.sql"
   },
   "nyc": {
     "exclude": [
