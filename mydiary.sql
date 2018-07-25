@@ -1,0 +1,25 @@
+\c mydiary_dev;
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS entries;
+
+CREATE TABLE users (
+  ID SERIAL PRIMARY KEY,
+  email VARCHAR NOT NULL UNIQUE,
+  password VARCHAR NOT NULL,
+  firstname VARCHAR,
+  lastname VARCHAR,
+  sex VARCHAR,
+  bio TEXT,
+  notification VARCHAR
+);
+
+CREATE TABLE entries (
+  ID SERIAL PRIMARY KEY,
+  title VARCHAR NOT NULL,
+  category VARCHAR NOT NULL,
+  image VARCHAR NOT NULL,
+  story TEXT NOT NULL,
+  userId INT NOT NULL,
+  FOREIGN KEY (userId) REFERENCES "users" (ID) ON DELETE CASCADE
+);
