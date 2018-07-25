@@ -9,7 +9,7 @@
     "build": "babel server -d server/dist --ignore server/dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
     "pretest": "npm run db-migrate",
-    "test": "cross-env NODE_ENV=test SECRET=testsecret nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register",
     "db-migrate": "babel-node server/models/db.js"
   },
   "nyc": {

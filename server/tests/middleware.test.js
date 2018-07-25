@@ -36,16 +36,3 @@ describe('validate Users', () => {
       });
   });
 });
-
-describe('validate params', () => {
-  it('should return 400 if params is invalid', (done) => {
-    chai.request(app)
-      .delete('/api/v1/entries/xyz')
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body.status).to.be.eql('error');
-        done();
-      });
-  });
-});
-
