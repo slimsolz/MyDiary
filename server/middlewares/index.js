@@ -22,7 +22,7 @@ export default class Middleware {
       email, password
     } = req.body;
 
-    if (!email || (email && !isNaN(email))) {
+    if (!email || (email && typeof email !== 'string')) {
       errors.email = 'Enter a valid email';
     }
 
@@ -50,23 +50,23 @@ export default class Middleware {
       errors.password = 'password cannot be empty';
     }
 
-    if (firstname && !isNaN(firstname)) {
+    if (firstname && typeof firstname !== 'string') {
       errors.firstname = 'Enter a valid firstname';
     }
 
-    if (lastname && !isNaN(lastname)) {
+    if (lastname && typeof lastname !== 'string') {
       errors.lastname = 'Enter a valid lastname';
     }
 
-    if (sex && !isNaN(sex)) {
+    if (sex && typeof sex !== 'string') {
       errors.sex = 'Enter a valid sex';
     }
 
-    if (notification && !isNaN(notification)) {
+    if (notification && typeof notification !== 'string') {
       errors.notification = 'Enter a valid notification';
     }
 
-    if (bio && !isNaN(bio)) {
+    if (bio && typeof bio !== 'string') {
       errors.bio = 'Enter a valid bio';
     }
 
