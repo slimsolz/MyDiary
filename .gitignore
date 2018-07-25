@@ -3,6 +3,7 @@ node_modules/
 dist/
 
 .coveralls.yml
+.codeclimate.yml
 
 # Coverage directory used by tools like istanbul
 coverage/
