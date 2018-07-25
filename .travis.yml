@@ -10,7 +10,6 @@ env:
     - CC_TEST_REPORTER_ID=a3bcf65776a813611a5bf6d456f621975d7adf4bc2babc9b570a400025e9b269
 before_script:
   - psql -c 'create database mydiary_test;' -U postgres
-  - psql -c 'create table users (id serial primary key, email varchar not null unique, password varchar not null, firstname varchar, lastname varchar, sex varchar, bio text, notification varchar);' -U postgres -d mydiary_test
   - chmod 0777 ./node_modules/.bin/mocha
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
