@@ -24,6 +24,7 @@ router.post('/entries', Middleware.isLoggedIn, Middleware.validateEntry, EntryCo
 router.put('/entries/:id', Middleware.isLoggedIn, Middleware.validateParams, Middleware.validateEntry, EntryController.updateEntry);
 router.delete('/entries/:id', Middleware.isLoggedIn, Middleware.validateParams, EntryController.deleteEntry);
 router.get('/entries', Middleware.isLoggedIn, EntryController.getAllEntries);
+router.get('/entries/:id', Middleware.isLoggedIn, Middleware.validateParams, EntryController.getEntry);
 
 router.get('*', (req, res, next) => {
   res.status(404).json({

@@ -112,6 +112,33 @@ describe('GET /entries', () => {
   });
 });
 
+describe('GET /entries/:id', () => {
+  it('should return 200 and get a single entry', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries/1')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.be.eql('success');
+        expect(res.body.message).to.be.eql('Entry reterived');
+        expect(res.body.entry).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should return 404 and error message', (done) => {
+    chai.request(app)
+      .get('/api/v1/entries/99')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.be.eql('error');
+        expect(res.body.message).to.be.eql('Entry not found');
+        done();
+      });
+  });
+});
+
 describe('DELETE /entries/:id', () => {
   it('should return 200 and delete an entry', (done) => {
     chai.request(app)

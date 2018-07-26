@@ -140,4 +140,36 @@ export default class EntryController {
       });
     });
   }
+
+  static getEntry(req, res) {
+    const client = new Client(connectionString);
+    client.connect();
+    const entryId = parseInt(req.params.id, 10);
+    const { userId } = req;
+
+    const findEntryQuery = {
+      text: 'SELECT * FROM entries WHERE id = $1 AND userId = $2',
+      values: [entryId, userId]
+    };
+
+    client.query(findEntryQuery, (err, entryFound) => {
+      if (entryFound.rowCount === 0) {
+        return res.status(404).json({
+          status: 'error',
+          message: 'Entry not found'
+        });
+      }
+
+      return res.json({
+        status: 'success',
+        message: 'Entry reterived',
+        entry: {
+          title: entryFound.rows[0].title,
+          category: entryFound.rows[0].category,
+          image: entryFound.rows[0].image,
+          story: entryFound.rows[0].story
+        }
+      });
+    });
+  }
 }
