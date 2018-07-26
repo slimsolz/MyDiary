@@ -77,7 +77,7 @@ export default class UserController {
         });
       }
 
-      const token = jwt.sign({ id: user.rows[0] }, process.env.SECRET, { expiresIn: '3h' });
+      const token = jwt.sign({ id: user.rows[0].id }, process.env.SECRET, { expiresIn: '3h' });
       return res.status(200).json({
         status: 'success',
         message: 'logged in',
