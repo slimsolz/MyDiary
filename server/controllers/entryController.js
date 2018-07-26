@@ -15,13 +15,13 @@ export default class EntryController {
       title, category, image, story
     } = req.body;
 
-    const findentryquery = {
+    const findEntryQuery = {
       text: 'SELECT * FROM entries WHERE userId = $1 AND title = $2',
       values: [userId, title.trim().toLowerCase()]
     };
 
-    client.query(findentryquery, (err, entryfound) => {
-      if (entryfound.rowCount !== 0) {
+    client.query(findEntryQuery, (err, entryFound) => {
+      if (entryFound.rowCount !== 0) {
         return res.status(409).json({
           status: 'error',
           message: 'Entry already exists'

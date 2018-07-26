@@ -16,12 +16,12 @@ export default class UserController {
       email, password
     } = req.body;
 
-    const finduserquery = {
+    const findUserQuery = {
       text: 'SELECT * FROM users WHERE email = $1',
       values: [email.trim().toLowerCase()]
     };
 
-    client.query(finduserquery, (err, result) => {
+    client.query(findUserQuery, (err, result) => {
       if (result.rowCount !== 0) {
         return res.status(409).json({
           status: 'error',
@@ -30,9 +30,9 @@ export default class UserController {
       }
 
       const hash = bcrypt.hashSync(password, 10);
-      const createuserquery = `INSERT INTO users(email, password) VALUES('${email}', '${hash}') RETURNING id, email, password`;
+      const createUserQuery = `INSERT INTO users(email, password) VALUES('${email}', '${hash}') RETURNING id, email, password`;
 
-      client.query(createuserquery, (error, user) => {
+      client.query(createUserQuery, (error, user) => {
         client.end();
         const { id } = user.rows[0];
         const token = jwt.sign({ id }, process.env.SECRET, { expiresIn: '3h' });
@@ -55,12 +55,12 @@ export default class UserController {
       email, password
     } = req.body;
 
-    const finduserquery = {
+    const findUserQuery = {
       text: 'SELECT * FROM users WHERE email = $1 LIMIT 1',
       values: [email.trim().toLowerCase()]
     };
 
-    client.query(finduserquery, (err, user) => {
+    client.query(findUserQuery, (err, user) => {
       client.end();
       if (user.rowCount === 0) {
         return res.status(401).json({
@@ -69,8 +69,8 @@ export default class UserController {
         });
       }
 
-      const correctpassword = bcrypt.compareSync(password, user.rows[0].password);
-      if (!correctpassword) {
+      const correctPassword = bcrypt.compareSync(password, user.rows[0].password);
+      if (!correctPassword) {
         return res.status(401).json({
           status: 'error',
           message: 'Incorrect Email or password'
@@ -94,12 +94,12 @@ export default class UserController {
     client.connect();
     const { userId } = req;
 
-    const userquery = {
+    const userQuery = {
       text: 'SELECT * FROM users WHERE id = $1 LIMIT 1',
       values: [userId]
     };
 
-    client.query(userquery, (err, user) => {
+    client.query(userQuery, (err, user) => {
       client.end();
       const {
         email, firstname, lastname, sex, bio, notification
@@ -128,16 +128,16 @@ export default class UserController {
       password, firstname, lastname, sex, bio, notification
     } = req.body;
 
-    const userquery = {
+    const userQuery = {
       text: 'SELECT * FROM users WHERE id = $1 LIMIT 1',
       values: [userId]
     };
 
-    client.query(userquery, (err, user) => {
+    client.query(userQuery, (err, user) => {
       const newPassword = password ? bcrypt.hashSync(password, 10) : user.rows[0].password;
 
-      const updatequery = `UPDATE users SET password = '${newPassword}', firstname = '${firstname}', lastname = '${lastname}', sex = '${sex}', bio = '${bio}', notification = '${notification}' WHERE id = ${userId} RETURNING *`;
-      client.query(updatequery, (error, updatedUser) => {
+      const updateQuery = `UPDATE users SET password = '${newPassword}', firstname = '${firstname}', lastname = '${lastname}', sex = '${sex}', bio = '${bio}', notification = '${notification}' WHERE id = ${userId} RETURNING *`;
+      client.query(updateQuery, (error, updatedUser) => {
         client.end();
         return res.status(200).json({
           status: 'success',
