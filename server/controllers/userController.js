@@ -47,4 +47,45 @@ export default class UserController {
       });
     });
   }
+
+  static signin(req, res) {
+    const client = new Client(connectionString);
+    client.connect();
+    const {
+      email, password
+    } = req.body;
+
+    const finduserquery = {
+      text: 'SELECT * FROM users WHERE email = $1 LIMIT 1',
+      values: [email.trim().toLowerCase()]
+    };
+
+    client.query(finduserquery, (err, user) => {
+      client.end();
+      if (user.rowCount === 0) {
+        return res.status(401).json({
+          status: 'error',
+          message: 'Incorrect Email or password'
+        });
+      }
+
+      const correctpassword = bcrypt.compareSync(password, user.rows[0].password);
+      if (!correctpassword) {
+        return res.status(401).json({
+          status: 'error',
+          message: 'Incorrect Email or password'
+        });
+      }
+
+      const token = jwt.sign({ id: user.rows[0] }, process.env.SECRET, { expiresIn: '3h' });
+      return res.status(200).json({
+        status: 'success',
+        message: 'logged in',
+        token,
+        user: {
+          email: user.rows[0].email
+        }
+      });
+    });
+  }
 }

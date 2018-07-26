@@ -38,7 +38,7 @@ describe('POST /auth/signup', () => {
 });
 
 describe('POST /auth/signin', () => {
-  it('should return 201 and a create a user', (done) => {
+  it('should return 200 and signin user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signin')
       .send({
@@ -72,7 +72,7 @@ describe('POST /auth/signin', () => {
     chai.request(app)
       .post('/api/v1/auth/signin')
       .send({
-        email: 'superuser@gmail.com',
+        email: 'usertest@ymail.com',
         password: 'rubbish'
       })
       .end((err, res) => {
