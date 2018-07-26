@@ -134,3 +134,16 @@ describe('validate Entry', () => {
   });
 });
 
+describe('validate params', () => {
+  it('should return 400 if params is invalid', (done) => {
+    chai.request(app)
+      .put('/api/v1/entries/xyz')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({})
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+});
