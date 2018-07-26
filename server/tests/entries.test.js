@@ -57,3 +57,42 @@ describe('POST /entries', () => {
       });
   });
 });
+
+describe('PUT /entries/:id', () => {
+  it('should return 200 and update an entry', (done) => {
+    chai.request(app)
+      .put('/api/v1/entries/1')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({
+        title: 'test update',
+        category: 'test update',
+        image: 'test update',
+        story: 'test update'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.be.eql('success');
+        expect(res.body.message).to.be.eql('Entry updated successfully');
+        expect(res.body.updated_entry).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should return 404 and error message', (done) => {
+    chai.request(app)
+      .put('/api/v1/entries/99')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({
+        title: 'test update',
+        category: 'test update',
+        image: 'test update',
+        story: 'test update'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.status).to.be.eql('error');
+        expect(res.body.message).to.be.eql('Entry not found');
+        done();
+      });
+  });
+});
