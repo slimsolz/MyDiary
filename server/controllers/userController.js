@@ -101,24 +101,22 @@ export default class UserController {
 
     client.query(userquery, (err, user) => {
       client.end();
-      if (user.rowCount === 1) {
-        const {
-          email, firstname, lastname, sex, bio, notification
-        } = user.rows[0];
+      const {
+        email, firstname, lastname, sex, bio, notification
+      } = user.rows[0];
 
-        return res.status(200).json({
-          status: 'success',
-          message: 'User profile reterived',
-          profile: {
-            email,
-            firstname,
-            lastname,
-            sex,
-            bio,
-            notification
-          }
-        });
-      }
+      return res.status(200).json({
+        status: 'success',
+        message: 'User profile reterived',
+        profile: {
+          email,
+          firstname,
+          lastname,
+          sex,
+          bio,
+          notification
+        }
+      });
     });
   }
 }
