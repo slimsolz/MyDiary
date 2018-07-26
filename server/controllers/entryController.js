@@ -114,4 +114,30 @@ export default class EntryController {
       });
     });
   }
+
+  static getAllEntries(req, res) {
+    const client = new Client(connectionString);
+    client.connect();
+    const { userId } = req;
+
+    const getEntryQuery = {
+      text: 'SELECT * FROM entries WHERE userId = $1',
+      values: [userId]
+    };
+
+    client.query(getEntryQuery, (err, entriesFound) => {
+      if (entriesFound.rowCount === 0) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'No entry available'
+        });
+      }
+
+      return res.json({
+        status: 'success',
+        message: 'All entries',
+        entries: entriesFound.rows
+      });
+    });
+  }
 }
