@@ -126,14 +126,14 @@ describe('GET /entries/:id', () => {
       });
   });
 
-  it('should return 400 and error message', (done) => {
+  it('should return 404 and error message', (done) => {
     chai.request(app)
       .get('/api/v1/entries/99')
       .set('Authorization', `Bearer ${adminToken}`)
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(404);
         expect(res.body.status).to.be.eql('error');
-        expect(res.body.message).to.be.eql('Entry does not exist');
+        expect(res.body.message).to.be.eql('Entry not found');
         done();
       });
   });
