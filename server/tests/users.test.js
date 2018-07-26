@@ -10,6 +10,23 @@ const User = {
   password: 'quicktest'
 };
 
+const SuperUser = {
+  email: 'superuser@gmail.com',
+  password: 'superpassword',
+};
+
+let superUserToken;
+
+before((done) => {
+  chai.request(app)
+    .post('/api/v1/auth/signup')
+    .send(SuperUser)
+    .end((err, res) => {
+      superUserToken = res.body.token;
+      done();
+    });
+});
+
 describe('POST /auth/signup', () => {
   it('should return 201 and a create a user', (done) => {
     chai.request(app)
@@ -79,6 +96,43 @@ describe('POST /auth/signin', () => {
         expect(res).to.have.status(401);
         expect(res.body.status).to.be.eql('error');
         expect(res.body.message).to.be.eql('Incorrect Email or password');
+        done();
+      });
+  });
+});
+
+describe('GET /account/me', () => {
+  it('should return 200 and show a user\'s profile', (done) => {
+    chai.request(app)
+      .get('/api/v1/account/me')
+      .set('Authorization', `Bearer ${superUserToken}`)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eql('success');
+        expect(res.body.message).to.eql('User profile reterived');
+        expect(res.body.profile).to.be.an('object');
+        done();
+      });
+  });
+});
+
+describe('PUT /account/me', () => {
+  it('should return 200 and a update a user\'s profile', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/me')
+      .set('Authorization', `Bearer ${superUserToken}`)
+      .send({
+        firstname: 'John',
+        lastname: 'Doe',
+        sex: 'M',
+        bio: 'my bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eql('success');
+        expect(res.body.message).to.eql('Profile updated successfully');
+        expect(res.body.user).to.be.an('object');
         done();
       });
   });

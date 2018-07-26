@@ -77,7 +77,7 @@ export default class UserController {
         });
       }
 
-      const token = jwt.sign({ id: user.rows[0] }, process.env.SECRET, { expiresIn: '3h' });
+      const token = jwt.sign({ id: user.rows[0].id }, process.env.SECRET, { expiresIn: '3h' });
       return res.status(200).json({
         status: 'success',
         message: 'logged in',
@@ -85,6 +85,72 @@ export default class UserController {
         user: {
           email: user.rows[0].email
         }
+      });
+    });
+  }
+
+  static viewProfile(req, res) {
+    const client = new Client(connectionString);
+    client.connect();
+    const { userId } = req;
+
+    const userquery = {
+      text: 'SELECT * FROM users WHERE id = $1 LIMIT 1',
+      values: [userId]
+    };
+
+    client.query(userquery, (err, user) => {
+      client.end();
+      const {
+        email, firstname, lastname, sex, bio, notification
+      } = user.rows[0];
+
+      return res.status(200).json({
+        status: 'success',
+        message: 'User profile reterived',
+        profile: {
+          email,
+          firstname,
+          lastname,
+          sex,
+          bio,
+          notification
+        }
+      });
+    });
+  }
+
+  static updateProfile(req, res) {
+    const client = new Client(connectionString);
+    client.connect();
+    const { userId } = req;
+    const {
+      password, firstname, lastname, sex, bio, notification
+    } = req.body;
+
+    const userquery = {
+      text: 'SELECT * FROM users WHERE id = $1 LIMIT 1',
+      values: [userId]
+    };
+
+    client.query(userquery, (err, user) => {
+      const newPassword = password ? bcrypt.hashSync(password, 10) : user.rows[0].password;
+
+      const updatequery = `UPDATE users SET password = '${newPassword}', firstname = '${firstname}', lastname = '${lastname}', sex = '${sex}', bio = '${bio}', notification = '${notification}' WHERE id = ${userId} RETURNING *`;
+      client.query(updatequery, (error, updatedUser) => {
+        client.end();
+        return res.status(200).json({
+          status: 'success',
+          message: 'Profile updated successfully',
+          user: {
+            email: updatedUser.rows[0].email,
+            firstname: updatedUser.rows[0].firstname,
+            lastname: updatedUser.rows[0].lastname,
+            sex: updatedUser.rows[0].sex,
+            bio: updatedUser.rows[0].bio,
+            notification: updatedUser.rows[0].notification
+          }
+        });
       });
     });
   }
