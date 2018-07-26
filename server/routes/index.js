@@ -1,7 +1,7 @@
 import express from 'express';
 import UserController from '../controllers/userController';
-/* import EntryController from '../controllers/entryController';
-import Middleware from '../middlewares/index'; */
+/* import EntryController from '../controllers/entryController'; */
+import Middleware from '../middlewares/index';
 
 const router = express.Router();
 
@@ -14,7 +14,8 @@ router.get('/', (req, res, next) => {
 });
 
 /* user */
-router.post('/auth/signup', UserController.signup);
+router.post('/auth/signup', Middleware.validateUser, UserController.signup);
+router.post('/auth/signin', Middleware.validateUser, UserController.signin);
 
 router.get('*', (req, res, next) => {
   res.status(404).json({
