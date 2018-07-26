@@ -5,7 +5,7 @@ import app from '../app';
 const { expect } = chai;
 chai.use(chaiHttp);
 
- describe('validate Users', () => {
+describe('validate Users', () => {
   it('should return 400 if email not provided', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
