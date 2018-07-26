@@ -20,7 +20,7 @@ router.get('/account/me', Middleware.isLoggedIn, UserController.viewProfile);
 router.put('/account/me', Middleware.isLoggedIn, UserController.updateProfile);
 
 /* entries */
-router.post('/entries', Middleware.isLoggedIn, EntryController.addEntry);
+router.post('/entries', Middleware.isLoggedIn, Middleware.validateEntry, EntryController.addEntry);
 
 router.get('*', (req, res, next) => {
   res.status(404).json({
