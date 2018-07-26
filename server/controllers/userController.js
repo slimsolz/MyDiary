@@ -88,4 +88,37 @@ export default class UserController {
       });
     });
   }
+
+  static viewProfile(req, res) {
+    const client = new Client(connectionString);
+    client.connect();
+    const { userId } = req;
+
+    const userquery = {
+      text: 'SELECT * FROM users WHERE id = $1 LIMIT 1',
+      values: [userId]
+    };
+
+    client.query(userquery, (err, user) => {
+      client.end();
+      if (user.rowCount === 1) {
+        const {
+          email, firstname, lastname, sex, bio, notification
+        } = user.rows[0];
+
+        return res.status(200).json({
+          status: 'success',
+          message: 'User profile reterived',
+          profile: {
+            email,
+            firstname,
+            lastname,
+            sex,
+            bio,
+            notification
+          }
+        });
+      }
+    });
+  }
 }
