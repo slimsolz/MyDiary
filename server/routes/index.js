@@ -17,6 +17,7 @@ router.get('/', (req, res, next) => {
 router.post('/auth/signup', Middleware.validateUser, UserController.signup);
 router.post('/auth/signin', Middleware.validateUser, UserController.signin);
 router.get('/account/me', Middleware.isLoggedIn, UserController.viewProfile);
+router.put('/account/me', Middleware.isLoggedIn, UserController.updateProfile);
 
 router.get('*', (req, res, next) => {
   res.status(404).json({

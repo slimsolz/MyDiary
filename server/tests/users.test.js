@@ -116,3 +116,25 @@ describe('GET /account/me', () => {
   });
 });
 
+describe('PUT /account/me', () => {
+  it('should return 200 and a update a user\'s profile', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/me')
+      .set('Authorization', `Bearer ${superUserToken}`)
+      .send({
+        firstname: 'John',
+        lastname: 'Doe',
+        sex: 'M',
+        bio: 'my bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.status).to.eql('success');
+        expect(res.body.message).to.eql('Profile updated successfully');
+        expect(res.body.user).to.be.an('object');
+        done();
+      });
+  });
+});
+
