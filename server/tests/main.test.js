@@ -18,7 +18,7 @@ describe('GET /', () => {
 });
 
 describe('POST /', () => {
-  it('should returon 404 and an error message', (done) => {
+  it('should return 404 and an error message', (done) => {
     chai.request(app)
       .post('/api/v1/xyz')
       .end((err, res) => {
@@ -30,7 +30,7 @@ describe('POST /', () => {
 });
 
 describe('PUT /', () => {
-  it('should returon 404 and an error message', (done) => {
+  it('should return 404 and an error message', (done) => {
     chai.request(app)
       .put('/api/v1/xyz')
       .end((err, res) => {
@@ -42,7 +42,7 @@ describe('PUT /', () => {
 });
 
 describe('DELETE /', () => {
-  it('should returon 404 and an error message', (done) => {
+  it('should return 404 and an error message', (done) => {
     chai.request(app)
       .delete('/api/v1/xyz')
       .end((err, res) => {
@@ -54,7 +54,7 @@ describe('DELETE /', () => {
 });
 
 describe('GET /', () => {
-  it('should returon 404 and an error message', (done) => {
+  it('should return 404 and an error message', (done) => {
     chai.request(app)
       .get('/api/v1/xyz')
       .end((err, res) => {

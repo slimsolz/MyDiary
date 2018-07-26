@@ -15,13 +15,13 @@ export default class EntryController {
       title, category, image, story
     } = req.body;
 
-    const findentryquery = {
+    const findEntryQuery = {
       text: 'SELECT * FROM entries WHERE userId = $1 AND title = $2',
       values: [userId, title.trim().toLowerCase()]
     };
 
-    client.query(findentryquery, (err, entryfound) => {
-      if (entryfound.rowCount !== 0) {
+    client.query(findEntryQuery, (err, entryFound) => {
+      if (entryFound.rowCount !== 0) {
         return res.status(409).json({
           status: 'error',
           message: 'Entry already exists'
@@ -60,8 +60,8 @@ export default class EntryController {
       values: [entryId, userId]
     };
 
-    client.query(findEntryQuery, (err, entryfound) => {
-      if (entryfound.rowCount === 0) {
+    client.query(findEntryQuery, (err, entryFound) => {
+      if (entryFound.rowCount === 0) {
         return res.status(404).json({
           status: 'error',
           message: 'Entry not found'
@@ -80,6 +80,36 @@ export default class EntryController {
             image: updatedEntry.rows[0].entry,
             story: updatedEntry.rows[0].story
           }
+        });
+      });
+    });
+  }
+
+  static deleteEntry(req, res) {
+    const client = new Client(connectionString);
+    client.connect();
+    const entryId = parseInt(req.params.id, 10);
+    const { userId } = req;
+
+    const findEntryQuery = {
+      text: 'SELECT * FROM entries WHERE id = $1 AND userId = $2',
+      values: [entryId, userId]
+    };
+
+    client.query(findEntryQuery, (err, entryFound) => {
+      if (entryFound.rowCount === 0) {
+        return res.status(404).json({
+          status: 'error',
+          message: 'Entry not found'
+        });
+      }
+
+      const deleteEntryQuery = `DELETE FROM entries WHERE userId = ${userId} AND id = ${entryId}`;
+      client.query(deleteEntryQuery, (error, result) => {
+        client.end();
+        return res.status(200).json({
+          status: 'success',
+          message: `${result.rowCount} entry deleted`
         });
       });
     });
