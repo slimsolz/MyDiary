@@ -8,7 +8,9 @@
     "start-dev": "nodemon server/app.js --exec babel-node",
     "build": "babel server -d server/dist --ignore server/dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
-    "test": "nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register"
+    "pretest": "export NODE_ENV=test || SET \"NODE_ENV=test\" && npm run db-migrate",
+    "test": "export NODE_ENV=test SECRET=testsecret || SET \"NODE_ENV=test\" SECRET=testsecret &&  nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register",
+    "db-migrate": "babel-node server/models/db.js"
   },
   "nyc": {
     "exclude": [
