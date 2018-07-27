@@ -1,9 +1,14 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
 import index from './routes/index';
 
 const app = express();
+
+const swaggerDocument = YAML.load(`${process.cwd()}/server/swagger.yaml`);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // port
 const port = process.env.PORT || 3000;
