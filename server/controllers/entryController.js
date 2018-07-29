@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Client } from 'pg';
 import config from '../config/config';
 
@@ -68,6 +69,15 @@ export default class EntryController {
         });
       }
 
+      const { createdat } = entryFound.rows[0];
+      const today = new Date();
+      if (!moment(createdat).isSame(today, 'day')) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Entry cannot be updated anymore'
+        });
+      }
+
       const updateEntryQuery = `UPDATE entries SET title = '${title}', category = '${category}', image = '${image}', story = '${story}' WHERE id = ${entryId} AND userId = ${userId} RETURNING *`;
       client.query(updateEntryQuery, (error, updatedEntry) => {
         client.end();
@@ -127,8 +137,8 @@ export default class EntryController {
 
     client.query(getEntryQuery, (err, entriesFound) => {
       if (entriesFound.rowCount === 0) {
-        return res.status(400).json({
-          status: 'error',
+        return res.status(200).json({
+          status: 'success',
           message: 'No entry available'
         });
       }

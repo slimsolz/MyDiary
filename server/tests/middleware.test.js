@@ -53,7 +53,7 @@ describe('validate Users', () => {
 
   it('should return 401, User not logged in', (done) => {
     chai.request(app)
-      .get('/api/v1/account/me')
+      .get('/api/v1/account/profile')
       .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI3MTM3NjQ2LCJleHAiOjE1MjcyMjQwNDZ9.0J2YZ8LAUpEnauDvl21U2OjHIQjRBzR70PlLVvNPD9o')
       .end((err, res) => {
         expect(res).to.have.status(401);

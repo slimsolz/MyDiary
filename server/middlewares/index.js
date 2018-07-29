@@ -38,7 +38,7 @@ export default class Middleware {
       email, password
     } = req.body;
 
-    if (!email || (email && typeof email !== 'string')) {
+    if (!email || (email && !validator.isEmail(email))) {
       errors.email = 'Enter a valid email';
     }
 

@@ -8,10 +8,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/*body {
-  font-family: Handlee;
-}
-*/
 
 /*clear floats after the columns*/
 .row::after {
@@ -61,7 +57,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     .col-12 {width: 100%;}
 
     .index #mainwrapper {
-      height: 100vh;
+      height: 86vh;
     }
 }
 @media only screen and (min-width: 1024px) {
@@ -80,12 +76,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     .col-m-12 {width: 100%;}
 
     .index #mainwrapper {
-      height: 100vh;
+      height: 86vh;
     }
 }
 header {
   border-bottom: 1px solid black;
-  background-color: blue;
+  background-color: #072e73;
 }
 
 header a {
@@ -112,7 +108,7 @@ header h2 {
   border: 1px solid white;
   padding: 10px;
   color: white;
-  background-color: blue
+  background-color: #072e73
 }
 
 .logo a:hover {
@@ -121,9 +117,9 @@ header h2 {
 }
 
 .headerLinks li a:hover {
-  border: 1px solid blue;
+  border: 1px solid #072e73;
   background: white;
-  color: blue;
+  color: #072e73;
   padding: 10px;
 }
 
@@ -144,31 +140,32 @@ header h2 {
   max-width: 900px;
   margin: 0 auto 0 auto;
   text-align: center;
-  padding: 100px 10px 60px 10px;
+  padding: 150px 10px 60px 10px;
   height: auto;
 }
 
 .intro h1 {
   color: white;
-  font-size: 72px;
+  font-size: 83px;
 }
 
 .intro p{
   color: white;
   margin-bottom: 30px;
+  font-size: 1.5em;
 }
 
 .intro button {
   color: white;
   text-decoration: none;
-  border: 1px solid blue;
-  background-color: blue;
+  border: 1px solid #072e73;
+  background-color: #072e73;
   padding: 15px;
 }
 
 .intro button:hover {
   border-color: white;
-  color: blue;
+  color: #072e73;
   background-color: white;
   text-decoration: underline;
 }
@@ -212,7 +209,7 @@ header h2 {
 	height: 40px;
 	padding: 20px;
 	background-color: #FFFFF0;
-	border: 1px solid blue;
+	border: 1px solid #072e73;
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
@@ -220,7 +217,7 @@ header h2 {
 .inputdiv input[type=submit]{
 	width: 100%;
 	height: 40px;
-	background-color: blue;
+	background-color: #072e73;
   padding: 0px;
   color: white;
   cursor: pointer;
@@ -229,7 +226,7 @@ header h2 {
 
 .passlnk a {
 	text-decoration: none;
-	color: blue;
+	color: #072e73;
 }
 
 .passlnk a:hover {
@@ -240,44 +237,18 @@ footer {
 	text-align: center;
 	padding: 10px;
 	font-weight: bold;
-	background-color: white;
-  border-top: 1px solid blue;
-	color: blue;
+	background-color: #072e73;
+  border-top: 1px solid #072e73;
+	color: white;
 }
 
 #entriesList {
-  border: 1px solid blue;
+  border: 1px solid #072e73;
   margin-bottom: 10px;
   height: 350px;
   overflow-y: scroll;
 }
 
-/*#mainWrapper aside h3{
-  padding: 10px;
-  text-align: center;
-}
-
-.sidenav li{
-  list-style: none;
-  padding: 10px;
-  border-bottom: 1px solid blue;
-  text-align: center;
-}
-
-.sidenav li:hover{
-  border: 2px solid blue;
-  font-size: 18px;
-  font-weight: bolder;
-}
-
-.sidenav a{
-  text-decoration: none;
-}
-
-.sidenav li:hover {
-  background-color: skyblue;
-}
-*/
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 	.logo, .linkdiv {
@@ -311,7 +282,7 @@ footer {
 } 
 
 figure {
-	border: 1px solid blue;
+	border: 1px solid #072e73;
 	padding: 10px;
 	text-align: center;
   -moz-box-shadow: 5px 5px 5px #777777;
@@ -386,7 +357,7 @@ article a {
 	/*padding: 5px;*/
 	word-wrap: break-word;
 	word-spacing: 2px;
-  font-family: "Rock Salt";
+  font-family: 'Rock Salt', serif;
 }
 
 #story img{
@@ -464,7 +435,7 @@ article a {
 }
 
 legend {
-  border: 1px solid blue;
+  border: 1px solid #072e73;
   padding: 3px;
 }
 
@@ -486,19 +457,19 @@ legend {
 #new_form input[type=submit] {
 	background: #9AC0CD;
 	border: 1px solid #9AC0CD;
-  max-width: 50%;
+  max-width: 20%;
 }
 
 #edit_form input[type=submit] {
   background: #9AC0CD;
   border: 1px solid #9AC0CD;
-  max-width: 50%;
+  max-width: 20%;
 }
 
 .profile_form input[type=submit] {
   background: #9AC0CD;
   border: 1px solid #9AC0CD;
-  max-width: 50%;
+  max-width: 20%;
 }
 
 #profilewrapper {
@@ -509,7 +480,7 @@ legend {
 .profile {
   max-width: 1000px;
   margin: 0 auto;
-  border: 1px solid blue;
+  border: 1px solid #072e73;
   padding: 10px;
   background-color: white;
 }
@@ -517,7 +488,7 @@ legend {
 fieldset {
   margin-bottom: 30px;
   padding: 10px;
-  border: 1px solid blue;
+  border: 1px solid #072e73;
 }
 
 #wrapper {
@@ -534,8 +505,8 @@ fieldset {
 
 .btn:hover {
   background-color: white;
-  color: blue;
-  border: 1px solid blue;
+  color: #072e73;
+  border: 1px solid #072e73;
 }
 
 .btn-footer {
@@ -544,9 +515,13 @@ fieldset {
 }
 
 .btn-edit {
-  background-color: blue;
+  background-color: #072e73;
 }
 
 .btn-delete {
   background-color: red;
+}
+
+input[type=submit] {
+  cursor: pointer;
 }
