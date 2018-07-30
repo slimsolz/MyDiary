@@ -5,13 +5,25 @@ import app from '../app';
 const { expect } = chai;
 chai.use(chaiHttp);
 
-describe('GET /', () => {
-  it('should return 200 and a welcome message', (done) => {
+describe('GET /api/v1', () => {
+  it('should get home', () => {
     chai.request(app)
-      .get('/api/v1/')
+      .get('/api/v1')
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.be.equal('Welcome to My Diary App');
+        expect(res.type).to.eqls('text/html');
+      });
+  });
+});
+
+//  API DOCS
+describe('GET docs/', () => {
+  it('should return 200', (done) => {
+    chai.request(app)
+      .get('/api-docs')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.type).to.eqls('text/html');
         done();
       });
   });

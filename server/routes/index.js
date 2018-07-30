@@ -6,11 +6,8 @@ import Middleware from '../middlewares/index';
 const router = express.Router();
 
 // homepage
-router.get('/', (req, res, next) => {
-  res.json({
-    status: 'success',
-    message: 'Welcome to My Diary App'
-  });
+router.get('/', (req, res) => {
+  res.redirect('/api-docs');
 });
 
 /* user */
