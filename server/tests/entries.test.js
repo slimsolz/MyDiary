@@ -29,7 +29,6 @@ const Entry = {
   story: 'test story'
 };
 
-
 describe('POST /entries', () => {
   it('should return 201 and a create an entry', (done) => {
     chai.request(app)

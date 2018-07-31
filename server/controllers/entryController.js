@@ -72,7 +72,7 @@ export default class EntryController {
 
       const { createdat } = entryFound.rows[0];
       const today = new Date();
-      if (!moment(createdat).isSame(today, 'day')) {
+      if (!confirmUpdateDate(createdat, today, 'day')) {
         return res.status(400).json({
           status: 'error',
           message: 'Entry cannot be updated anymore'
