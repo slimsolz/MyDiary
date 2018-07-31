@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
 /* user */
 router.post('/auth/signup', Middleware.validateUser, UserController.signup);
 router.post('/auth/signin', Middleware.validateUser, UserController.signin);
-router.get('/account/me', Middleware.isLoggedIn, UserController.viewProfile);
-router.put('/account/me', Middleware.isLoggedIn, UserController.updateProfile);
+router.get('/account/profile', Middleware.isLoggedIn, UserController.viewProfile);
+router.put('/account/profile', Middleware.isLoggedIn, UserController.updateProfile);
 
 /* entries */
 router.post('/entries', Middleware.isLoggedIn, Middleware.validateEntry, EntryController.addEntry);
@@ -23,28 +23,7 @@ router.delete('/entries/:id', Middleware.isLoggedIn, Middleware.validateParams, 
 router.get('/entries', Middleware.isLoggedIn, EntryController.getAllEntries);
 router.get('/entries/:id', Middleware.isLoggedIn, Middleware.validateParams, EntryController.getEntry);
 
-router.get('*', (req, res, next) => {
-  res.status(404).json({
-    status: 'error',
-    message: '404 Page not found'
-  });
-});
-
-router.post('*', (req, res, next) => {
-  res.status(404).json({
-    status: 'error',
-    message: '404 Page not found'
-  });
-});
-
-router.put('*', (req, res, next) => {
-  res.status(404).json({
-    status: 'error',
-    message: '404 Page not found'
-  });
-});
-
-router.delete('*', (req, res, next) => {
+router.all('*', (req, res) => {
   res.status(404).json({
     status: 'error',
     message: '404 Page not found'

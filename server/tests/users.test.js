@@ -101,10 +101,10 @@ describe('POST /auth/signin', () => {
   });
 });
 
-describe('GET /account/me', () => {
+describe('GET /account/profile', () => {
   it('should return 200 and show a user\'s profile', (done) => {
     chai.request(app)
-      .get('/api/v1/account/me')
+      .get('/api/v1/account/profile')
       .set('Authorization', `Bearer ${superUserToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -116,10 +116,10 @@ describe('GET /account/me', () => {
   });
 });
 
-describe('PUT /account/me', () => {
+describe('PUT /account/profile', () => {
   it('should return 200 and a update a user\'s profile', (done) => {
     chai.request(app)
-      .put('/api/v1/account/me')
+      .put('/api/v1/account/profile')
       .set('Authorization', `Bearer ${superUserToken}`)
       .send({
         firstname: 'John',
