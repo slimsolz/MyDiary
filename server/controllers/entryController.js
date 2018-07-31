@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { Client } from 'pg';
 import config from '../config/config';
+import confirmUpdateDate from '../helpers/index';
 
 require('dotenv').config();
 

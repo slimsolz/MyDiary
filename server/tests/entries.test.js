@@ -29,7 +29,6 @@ const Entry = {
   story: 'test story'
 };
 
-/* const yesterday = (d => new Date(d.setDate(d.getDate() - 1)))(new Date()); */
 
 describe('POST /entries', () => {
   it('should return 201 and a create an entry', (done) => {
@@ -176,32 +175,6 @@ describe('GET /entries', () => {
         expect(res).to.have.status(200);
         expect(res.body.status).to.be.eql('success');
         expect(res.body.message).to.be.eql('No entry available');
-        done();
-      });
-  });
-});
-
-describe('UPDATE /entries', () => {
-  it('should return 201 and a create an entry', (done) => {
-    chai.request(app)
-      .post('/api/v1/entries')
-      .set('Authorization', `Bearer ${adminToken}`)
-      .send(Entry)
-      .end((err, res) => {
-        done();
-      });
-  });
-  it('should return 200 and update an entry', (done) => {
-    chai.request(app)
-      .put('/api/v1/entries/2')
-      .set('Authorization', `Bearer ${adminToken}`)
-      .send({
-        title: 'test update',
-        category: 'test update',
-        image: 'test update',
-        story: 'test update'
-      })
-      .end((err, res) => {
         done();
       });
   });
