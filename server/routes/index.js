@@ -23,28 +23,7 @@ router.delete('/entries/:id', Middleware.isLoggedIn, Middleware.validateParams, 
 router.get('/entries', Middleware.isLoggedIn, EntryController.getAllEntries);
 router.get('/entries/:id', Middleware.isLoggedIn, Middleware.validateParams, EntryController.getEntry);
 
-router.get('*', (req, res) => {
-  res.status(404).json({
-    status: 'error',
-    message: '404 Page not found'
-  });
-});
-
-router.post('*', (req, res) => {
-  res.status(404).json({
-    status: 'error',
-    message: '404 Page not found'
-  });
-});
-
-router.put('*', (req, res) => {
-  res.status(404).json({
-    status: 'error',
-    message: '404 Page not found'
-  });
-});
-
-router.delete('*', (req, res) => {
+router.all('*', (req, res) => {
   res.status(404).json({
     status: 'error',
     message: '404 Page not found'
