@@ -1,0 +1,62 @@
+{
+  "name": "mydiary",
+  "version": "1.0.0",
+  "description": "\u001b[2~\u001b[2~An online journal where users can pen down their thoughts and feelings",
+  "main": "app.js",
+  "scripts": {
+    "start": "babel-node server/app.js",
+    "start-dev": "nodemon server/app.js --exec babel-node",
+    "build": "babel server -d server/dist --ignore server/dist",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
+    "pretest": "export NODE_ENV=test || SET \"NODE_ENV=test\" && npm run db-migrate",
+    "test": "export NODE_ENV=test SECRET=testsecret || SET \"NODE_ENV=test\" SECRET=testsecret &&  nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register",
+    "db-migrate": "babel-node server/models/db.js"
+  },
+  "nyc": {
+    "exclude": [
+      "server/tests"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slimsolz/MyDiary.git"
+  },
+  "author": "Odumah Solomon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slimsolz/MyDiary/issues"
+  },
+  "homepage": "https://github.com/slimsolz/MyDiary#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "lodash.isempty": "^4.4.0",
+    "moment": "^2.22.2",
+    "morgan": "^1.9.0",
+    "nyc": "^12.0.2",
+    "pg": "^7.4.3",
+    "swagger-ui-express": "^3.0.10",
+    "validator": "^10.4.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^1.18.1"
+  }
+}
