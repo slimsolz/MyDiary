@@ -3,7 +3,7 @@ import confirmUpdateDate from '../helpers/index';
 
 const { expect } = chai;
 
-it('should return true if entry cannot be pudated again', () => {
+it('should return true if entry cannot be udated again', () => {
   const today = new Date();
   const result = confirmUpdateDate(today, today, 'day');
 

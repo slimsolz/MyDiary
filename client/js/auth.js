@@ -23,7 +23,7 @@ const signup = (e) => {
       .then((newUser) => {
         if (newUser.status === 'success') {
           window.localStorage.token = newUser.token;
-          displayMessage(`${newUser.user.email} ${newUser.message}`);
+          displayMessage(newUser.message);
           setTimeout(() => {
             window.location.replace('entries.html');
           }, 5000);

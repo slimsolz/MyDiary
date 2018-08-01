@@ -35,7 +35,7 @@ describe('POST /auth/signup', () => {
       .end((err, res) => {
         expect(res).to.have.status(201);
         expect(res.body.status).to.be.eql('success');
-        expect(res.body.message).to.be.eql('User created and logged in');
+        expect(res.body.message).to.be.eql('Your account has been created successfully and logged in....redirecting');
         expect(res.body.user).to.be.an('object');
         done();
       });
@@ -48,7 +48,7 @@ describe('POST /auth/signup', () => {
       .end((err, res) => {
         expect(res).to.have.status(409);
         expect(res.body.status).to.be.eql('error');
-        expect(res.body.message).to.be.eql('Account exists');
+        expect(res.body.message).to.be.eql('Account already exists');
         done();
       });
   });
