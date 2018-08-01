@@ -25,7 +25,7 @@ export default class UserController {
       if (result.rowCount !== 0) {
         return res.status(409).json({
           status: 'error',
-          message: 'Account exists'
+          message: 'Account already exists'
         });
       }
 
@@ -38,7 +38,7 @@ export default class UserController {
         const token = jwt.sign({ id }, process.env.SECRET, { expiresIn: '3h' });
         return res.status(201).json({
           status: 'success',
-          message: 'User created and logged in',
+          message: 'Your account has been created successfully and logged in....redirecting',
           token,
           user: {
             email: user.rows[0].email
