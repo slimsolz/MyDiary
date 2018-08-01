@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1/';
+const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
 const signupForm = document.getElementById('signup_form');
 
 const signup = (e) => {
@@ -11,7 +11,7 @@ const signup = (e) => {
   if (password !== rePassword) {
     displayMessage('passwords do not match', 2);
   } else {
-    fetch(`${baseUrl}auth/signup`, {
+    fetch(`${baseUrl}/auth/signup`, {
       method: 'POST',
       body: JSON.stringify({
         email,

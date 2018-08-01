@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1/';
+const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
 const loginForm = document.getElementById('login_form');
 
 const signin = (e) => {
@@ -7,7 +7,7 @@ const signin = (e) => {
   const email = form.email.value;
   const password = form.pass.value;
 
-  fetch(`${baseUrl}auth/signin`, {
+  fetch(`${baseUrl}/auth/signin`, {
     method: 'POST',
     body: JSON.stringify({
       email,
