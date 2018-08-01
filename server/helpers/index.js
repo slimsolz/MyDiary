@@ -1,7 +1,5 @@
-import moment from 'moment';
-
-const confirmUpdateDate = (createdDate, currentDate, compare) => {
-  if (moment(createdDate).isSame(currentDate, compare)) {
+const confirmUpdateDate = (createdDate, currentDate) => {
+  if (createdDate === currentDate) {
     return true;
   }
 
