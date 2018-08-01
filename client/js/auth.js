@@ -23,15 +23,15 @@ const signup = (e) => {
       .then((newUser) => {
         if (newUser.status === 'success') {
           window.localStorage.token = newUser.token;
-          console.log(`${newUser.user.email} ${newUser.message}`);
+          displayMessage(`${newUser.user.email} ${newUser.message}`);
           setTimeout(() => {
             window.location.replace('entries.html');
           }, 5000);
         } else {
-          console.log(`Error ${newUser.message}`);
+          displayMessage(newUser.message, 2);
         }
       })
-      .catch(err => console.log(`Error ${err}`));
+      .catch(err => displayMessage(err, 3));
   }
 };
 

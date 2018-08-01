@@ -525,3 +525,21 @@ fieldset {
 input[type=submit] {
   cursor: pointer;
 }
+
+#display {
+  width: 100%;
+  text-align: center;
+  padding: .8em;
+  font-size: 1em;
+  visibility: hidden;
+  color: #f6f6f6;
+  z-index: 1;
+  position: fixed;
+  top: 4em;
+}
+
+#display.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+}
