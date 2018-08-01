@@ -9,7 +9,7 @@ const signup = (e) => {
   const rePassword = form.pass2.value;
 
   if (password !== rePassword) {
-    alert('passwords do not match');
+    displayMessage('passwords do not match', 2);
   } else {
     fetch(`${baseUrl}auth/signup`, {
       method: 'POST',
