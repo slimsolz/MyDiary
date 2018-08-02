@@ -11,7 +11,7 @@ it('should return true if entry cannot be udated again', () => {
 });
 
 it('should return false if entry can be updated again', () => {
-  const created = (d => new Date(d.setDate(d.getDate() - 1)));
+  const created = (d => new Date(d.setDate(d.getDate() - 1)))(new Date());
   const today = new Date();
   const result = confirmUpdateDate(created, today);
 

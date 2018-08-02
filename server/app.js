@@ -11,6 +11,7 @@ const app = express();
 const swaggerDocument = YAML.load(`${process.cwd()}/server/swagger.yaml`);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+
 app.use(cors());
 
 // port
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1', index);
+app.use('/', express.static('client'));
 
 app.listen(port, () => {
   console.log(`App started on port ${port}`);

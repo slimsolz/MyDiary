@@ -2,7 +2,7 @@ const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
 const loginForm = document.getElementById('login_form');
 
 const signin = (e) => {
-  e.preventDefault(e);
+  e.preventDefault();
   const form = document.forms.login_form;
   const email = form.email.value;
   const password = form.pass.value;
@@ -26,6 +26,9 @@ const signin = (e) => {
       } else {
         displayMessage(newUser.message, 2);
       }
+
+      form.email.value = '';
+      form.pass.value = '';
     })
     .catch(err => displayMessage(err, 3));
 };
