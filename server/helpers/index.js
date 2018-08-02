@@ -1,9 +1,3 @@
-const confirmUpdateDate = (createdDate, currentDate) => {
-  if (createdDate.toDateString() === currentDate.toDateString()) {
-    return true;
-  }
-
-  return false;
-};
+const confirmUpdateDate = (createdDate, currentDate) => createdDate.toDateString() === currentDate.toDateString();
 
 export default confirmUpdateDate;
