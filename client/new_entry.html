@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDiary</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body> 
+    <header class="row">
+      <div class="logo col-6">
+        <h2><a href="index.html"><span class="logoA">My</span>Diary</a></h2>
+      </div>  
+      <div class="linkdiv col-6">
+        <ul class="headerLinks">
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="index.html">Log Out</a></li>
+        </ul>
+      </div>      
+    </header> 
+
+    <div id="mainWrapper"><!-- .Main Wrapper -->
+      <div id="wrapper">
+        <div class="row">
+          <section class="col-12 mainentries"><!-- Mainenteries -->
+            <div class="row">
+              <div id="new_link" class="col-12">
+                <a href="entries.html">All Entries</a>
+              </div>
+              <div class="" id="display">
+                <p id="alert"></p>
+              </div>
+              <div id="new_form">
+                <h1 class="headin">New Entry</h1>
+                <form id="add_new_form" role="form">
+                  <div>
+                    <label class="col-3">Title:</label>
+                    <input class="form-input col-8" type="text" id="title" name="title" placeholder="&plus;Title" required>
+                  </div>
+                  <div>
+                    <label class="col-3">Category:</label>
+                    <input class="form-input col-8" type="text" id="category" name="category" placeholder="Category">
+                  </div>
+                  <div>
+                    <label class="col-3">Image:</label>
+                    <input class="form-input col-8" type="file" name="entry_image">
+                  </div>
+                  <div>
+                  <div>
+                    <label class="col-3">Story:</label>
+                    <textarea id="story" class="form-input col-8" rows="5" cols="6" required></textarea>
+                  </div>
+                  <div>
+                    <div class="col-9"></div>
+                    <input type="submit" name="submit" value="SAVE" class="form-input col-3">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section><!-- Mainenteries Ends -->
+        </div><!-- row ends -->
+      </div>
+    </div><!-- .Main Wrapper End -->
+
+    <footer>
+      &copy; 2018 | MyDiary
+    </footer>
+
+    <script type="text/javascript" src=""></script>
+  </body>
+</html>
