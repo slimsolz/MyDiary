@@ -1,5 +1,5 @@
 const confirmUpdateDate = (createdDate, currentDate) => {
-  if (createdDate === currentDate) {
+  if (createdDate.toDateString() === currentDate.toDateString()) {
     return true;
   }
 

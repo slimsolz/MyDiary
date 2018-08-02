@@ -527,7 +527,7 @@ input[type=submit] {
 }
 
 #display {
-  width: 100%;
+  width: auto;
   text-align: center;
   padding: .8em;
   font-size: 1em;

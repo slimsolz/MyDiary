@@ -79,7 +79,7 @@ describe('POST /auth/signin', () => {
         password: 'rubbish'
       })
       .end((err, res) => {
-        expect(res).to.have.status(401);
+        expect(res).to.have.status(400);
         expect(res.body.status).to.be.eql('error');
         expect(res.body.message).to.be.eql('Incorrect Email or password');
         done();
@@ -93,7 +93,7 @@ describe('POST /auth/signin', () => {
         password: 'rubbish'
       })
       .end((err, res) => {
-        expect(res).to.have.status(401);
+        expect(res).to.have.status(400);
         expect(res.body.status).to.be.eql('error');
         expect(res.body.message).to.be.eql('Incorrect Email or password');
         done();

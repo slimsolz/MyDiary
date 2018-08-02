@@ -63,7 +63,7 @@ export default class UserController {
     client.query(findUserQuery, (err, user) => {
       client.end();
       if (user.rowCount === 0) {
-        return res.status(401).json({
+        return res.status(400).json({
           status: 'error',
           message: 'Incorrect Email or password'
         });
@@ -71,7 +71,7 @@ export default class UserController {
 
       const correctPassword = bcrypt.compareSync(password, user.rows[0].password);
       if (!correctPassword) {
-        return res.status(401).json({
+        return res.status(400).json({
           status: 'error',
           message: 'Incorrect Email or password'
         });
