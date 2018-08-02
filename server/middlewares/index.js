@@ -101,7 +101,9 @@ export default class Middleware {
 
     if (password && password.includes(' ')) {
       errors.password = 'password cannot contain spaces';
-    } else if (password && (password.length < 5)) {
+    }
+
+    if (password && (password.length < 5)) {
       errors.password = 'password must be more than 5 characters';
     }
 
