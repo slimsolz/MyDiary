@@ -51,6 +51,34 @@ describe('validate Users', () => {
       });
   });
 
+  it('should return 400 if password contains space', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        email: 'slim@gmail.com',
+        password: '  '
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+
+  it('should return 400 if password is less than 5 characters provided', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        email: 'slim@gmail.com',
+        password: ''
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+
   it('should return 401, User not logged in', (done) => {
     chai.request(app)
       .get('/api/v1/account/profile')
@@ -132,6 +160,22 @@ describe('validate Entry', () => {
         done();
       });
   });
+  it('should return 400 if entry values are not strings', (done) => {
+    chai.request(app)
+      .post('/api/v1/entries')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        title: 1234,
+        category: 234,
+        image: 'image',
+        story: ''
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
 });
 
 describe('validate params', () => {
@@ -140,6 +184,148 @@ describe('validate params', () => {
       .put('/api/v1/entries/xyz')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({})
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+});
+
+describe('validate users profile', () => {
+  it('should return 400 if password contains space', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        password: '1 2 3',
+        firstname: 'john',
+        lastname: 'doe',
+        sex: 'm',
+        bio: 'short bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+
+  it('should return 400 if password is less than 5 characters provided', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        password: '123',
+        firstname: 'john',
+        lastname: 'doe',
+        sex: 'm',
+        bio: 'short bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if firstname not provided', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        firstname: ' ',
+        lastname: 'doe',
+        sex: 'm',
+        bio: 'short bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if lastname not provided', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        firstname: 'doe',
+        lastname: ' ',
+        sex: 'm',
+        bio: 'short bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if sex not provided', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        firstname: 'doe',
+        lastname: 'john',
+        sex: ' ',
+        bio: 'short bio',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if bio not provided', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        firstname: 'doe',
+        lastname: 'john',
+        sex: 'm',
+        bio: ' ',
+        notification: 'daily'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if notification not provided', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        firstname: 'doe',
+        lastname: 'john',
+        sex: 'm',
+        bio: 'short bio',
+        notification: ' '
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
+  it('should return 400 if values are not strings', (done) => {
+    chai.request(app)
+      .put('/api/v1/account/profile')
+      .set('Authorization', `Bearer ${anodaToken}`)
+      .send({
+        firstname: 1234,
+        lastname: 'john',
+        sex: 'm',
+        bio: 'short bio',
+        notification: 55
+      })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.status).to.be.eql('error');
