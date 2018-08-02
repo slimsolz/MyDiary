@@ -26,6 +26,9 @@ const signin = (e) => {
       } else {
         displayMessage(newUser.message, 2);
       }
+
+      form.email.value = '';
+      form.pass.value = '';
     })
     .catch(err => displayMessage(err, 3));
 };
