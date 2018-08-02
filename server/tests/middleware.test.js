@@ -23,6 +23,19 @@ before((done) => {
 });
 
 describe('validate Users', () => {
+  it('should return 400 if email not a string', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        email: true,
+        password: 'winiefknorn'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
   it('should return 400 if email not provided', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -37,12 +50,25 @@ describe('validate Users', () => {
       });
   });
 
+  it('should return 400 if password not a string', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        email: 'slim@gmail.com',
+        password: true
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.status).to.be.eql('error');
+        done();
+      });
+  });
   it('should return 400 if password not provided', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
         email: 'slim@gmail.com',
-        password: ''
+        password: ' '
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
