@@ -31,7 +31,7 @@ window.onclick = (event) => {
 deletebutton.onclick = () => {
   const ans = confirm('Are You Sure');
   if (ans) {
-    alert('deleted successfully');
+    displayMessage('deleted successfully');
   } else {
     modal.style.display = 'none';
   }
