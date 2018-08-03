@@ -38,9 +38,10 @@ export default class EntryController {
           status: 'success',
           message: 'Entry saved successfully',
           entry: {
+            id: createdEntry.rows[0].id,
             title: createdEntry.rows[0].title,
             category: createdEntry.rows[0].category,
-            image: createdEntry.rows[0].entry,
+            image: createdEntry.rows[0].image,
             story: createdEntry.rows[0].story
           }
         });
@@ -86,9 +87,10 @@ export default class EntryController {
           status: 'success',
           message: 'Entry updated successfully',
           updated_entry: {
+            id: updatedEntry.rows[0].id,
             title: updatedEntry.rows[0].title,
             category: updatedEntry.rows[0].category,
-            image: updatedEntry.rows[0].entry,
+            image: updatedEntry.rows[0].image,
             story: updatedEntry.rows[0].story
           }
         });
@@ -175,6 +177,7 @@ export default class EntryController {
         status: 'success',
         message: 'Entry reterived',
         entry: {
+          id: entryFound.rows[0].id,
           title: entryFound.rows[0].title,
           category: entryFound.rows[0].category,
           image: entryFound.rows[0].image,
