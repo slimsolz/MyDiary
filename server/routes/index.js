@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.post('/auth/signup', Middleware.validateUser, UserController.signup);
 router.post('/auth/signin', Middleware.validateUser, UserController.signin);
 router.get('/account/profile', Middleware.isLoggedIn, UserController.viewProfile);
-router.put('/account/profile', Middleware.isLoggedIn, UserController.updateProfile);
+router.put('/account/profile', Middleware.isLoggedIn, Middleware.validateProfile, UserController.updateProfile);
 
 /* entries */
 router.post('/entries', Middleware.isLoggedIn, Middleware.validateEntry, EntryController.addEntry);

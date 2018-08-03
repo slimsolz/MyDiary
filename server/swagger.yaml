@@ -97,7 +97,7 @@ paths:
               status: error
               message: Enter valid email
 
-  /account/me:
+  /account/profile:
     get:
       tags:
       - profile

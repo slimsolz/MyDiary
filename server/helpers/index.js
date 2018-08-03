@@ -1,11 +1,15 @@
-import moment from 'moment';
+import bcrypt from 'bcrypt';
 
-const confirmUpdateDate = (createdDate, currentDate, compare) => {
-  if (moment(createdDate).isSame(currentDate, compare)) {
-    return true;
+export default class Helper {
+  static encryptPassword(password) {
+    return bcrypt.hashSync(password, 10);
   }
 
-  return false;
-};
+  static comparePassword(password, savedPassword) {
+    return bcrypt.compareSync(password, savedPassword);
+  }
 
-export default confirmUpdateDate;
+  static confirmUpdateDate(createdDate, currentDate) {
+    return createdDate.toDateString() === currentDate.toDateString();
+  }
+}

@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 import { Client } from 'pg';
+import Helper from '../helpers/index';
 import config from '../config/config';
 
-require('dotenv').config();
+dotenv.config();
 
 const env = process.env.NODE_ENV || 'development';
 const connectionString = config[env];
@@ -25,11 +26,11 @@ export default class UserController {
       if (result.rowCount !== 0) {
         return res.status(409).json({
           status: 'error',
-          message: 'Account exists'
+          message: 'Account already exists'
         });
       }
 
-      const hash = bcrypt.hashSync(password, 10);
+      const hash = Helper.encryptPassword(password);
       const createUserQuery = `INSERT INTO users(email, password) VALUES('${email}', '${hash}') RETURNING id, email, password`;
 
       client.query(createUserQuery, (error, user) => {
@@ -38,9 +39,10 @@ export default class UserController {
         const token = jwt.sign({ id }, process.env.SECRET, { expiresIn: '3h' });
         return res.status(201).json({
           status: 'success',
-          message: 'User created and logged in',
+          message: 'Your account has been created successfully and logged in....redirecting',
           token,
           user: {
+            id: user.rows[0].id,
             email: user.rows[0].email
           }
         });
@@ -69,7 +71,7 @@ export default class UserController {
         });
       }
 
-      const correctPassword = bcrypt.compareSync(password, user.rows[0].password);
+      const correctPassword = Helper.comparePassword(password, user.rows[0].password);
       if (!correctPassword) {
         return res.status(401).json({
           status: 'error',
@@ -83,6 +85,7 @@ export default class UserController {
         message: 'logged in',
         token,
         user: {
+          id: user.rows[0].id,
           email: user.rows[0].email
         }
       });

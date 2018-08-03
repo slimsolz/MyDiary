@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyDiary</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body> 
     <header class="row">
@@ -27,12 +27,15 @@
               <div id="new_link" class="col-12">
                 <a href="entries.html">All Entries</a>
               </div>
+              <div class="" id="display">
+                <p id="alert"></p>
+              </div>
               <div id="new_form">
                 <h1 class="headin">New Entry</h1>
                 <form id="add_new_form" role="form">
                   <div>
                     <label class="col-3">Title:</label>
-                    <input class="form-input col-8" type="text" id="title" name="title" placeholder="&plus;Title" required>
+                    <input class="form-input col-8" type="text" id="title" name="title" placeholder="Title" required>
                   </div>
                   <div>
                     <label class="col-3">Category:</label>
@@ -63,6 +66,7 @@
       &copy; 2018 | MyDiary
     </footer>
 
-    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/addEntry.js"></script>
   </body>
 </html>
