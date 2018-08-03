@@ -463,13 +463,13 @@ legend {
 #edit_form input[type=submit] {
   background: #9AC0CD;
   border: 1px solid #9AC0CD;
-  max-width: 20%;
+  max-width: 100%;
 }
 
 .profile_form input[type=submit] {
   background: #9AC0CD;
   border: 1px solid #9AC0CD;
-  max-width: 20%;
+  max-width: 100%;
 }
 
 #profilewrapper {
