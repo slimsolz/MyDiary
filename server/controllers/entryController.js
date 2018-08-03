@@ -1,8 +1,9 @@
+import dotenv from 'dotenv';
 import { Client } from 'pg';
 import config from '../config/config';
-import confirmUpdateDate from '../helpers/index';
+import Helper from '../helpers/index';
 
-require('dotenv').config();
+dotenv.config();
 
 const env = process.env.NODE_ENV || 'development';
 const connectionString = config[env];
@@ -71,7 +72,7 @@ export default class EntryController {
 
       const { createdat } = entryFound.rows[0];
       const today = new Date();
-      if (!confirmUpdateDate(createdat, today)) {
+      if (!Helper.confirmUpdateDate(createdat, today)) {
         return res.status(403).json({
           status: 'error',
           message: 'Entry cannot be updated anymore'

@@ -39,15 +39,17 @@ export default class Middleware {
       email, password
     } = req.body;
 
-    if (!email || (email && !validator.isEmail(email))) {
+    if (typeof email !== 'string') {
+      errors.email = 'Must be a string';
+    } else if (!email || (email && !validator.isEmail(email))) {
       errors.email = 'Enter a valid email';
     }
 
-    if (!password) {
+    if (typeof password !== 'string') {
+      errors.password = 'Must be a string';
+    } else if (!password) {
       errors.password = 'password cannot be empty';
-    }
-
-    if (password && password.includes(' ')) {
+    } else if (password && password.includes(' ')) {
       errors.password = 'password cannot contain spaces';
     }
 
