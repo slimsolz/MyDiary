@@ -2,6 +2,19 @@ const baseUrl = 'http://localhost:3000/api/v1';
 const createElement = element => document.createElement(element);
 const append = (parent, child) => parent.appendChild(child);
 
+function deleteEntry(entryId) {
+  const token = `Bearer ${localStorage.token}`;
+  const answer = confirm('Are You Sure??');
+  if (answer) {
+    fetch(`${baseUrl}/entries/${entryId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', Authorization: token }
+    })
+      .then(data => location.reload(true))
+      .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
+  }
+}
+
 function load() {
   const container = document.getElementById('content');
   const token = `Bearer ${localStorage.token}`;
@@ -25,7 +38,7 @@ function load() {
           const p = createElement('p');
           const buttonDiv = createElement('div');
           const editbtn = createElement('a');
-          const deletebtn = createElement('a');
+          const deletebtn = createElement('button');
           img.src = 'images/miss_u.jpg';
           img.alt = 'Missing you';
           article.setAttribute('class', 'col-4 col-m-2 col-s-4');
@@ -47,6 +60,7 @@ function load() {
           append(figure, buttonDiv);
           append(article, figure);
           append(content, article);
+          deletebtn.onclick = () => deleteEntry(id);
         });
       } else {
         displayMessage(result.message, 'error');
