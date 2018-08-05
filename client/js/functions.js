@@ -1,12 +1,12 @@
-const displayMessage = (message, type = 1) => {
+const displayMessage = (message, type = 'success') => {
   document.getElementById('display').className = 'show';
   const alert = document.getElementById('alert');
   switch (type) {
-    case 2:
+    case 'error':
       document.getElementById('display').style.backgroundColor = '#E74C3C';
       alert.innerHTML = message;
       break;
-    case 3:
+    case 'serverError':
       document.getElementById('display').style.backgroundColor = '#3498db';
       alert.innerHTML = message;
       break;

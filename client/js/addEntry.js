@@ -1,4 +1,4 @@
-const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
+const baseUrl = 'http://localhost:3000/api/v1';
 const addNewForm = document.getElementById('add_new_form');
 
 const addNewEntry = (e) => {
@@ -25,14 +25,14 @@ const addNewEntry = (e) => {
       if (newEntry.status === 'success') {
         displayMessage(newEntry.message);
       } else {
-        displayMessage(newEntry.message, 2);
+        displayMessage(newEntry.message, 'error');
       }
 
       form.title.value = '';
       form.category.value = '';
       form.story.value = '';
     })
-    .catch(err => displayMessage(err, 3));
+    .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
 };
 
 addNewForm.addEventListener('submit', addNewEntry, false);
