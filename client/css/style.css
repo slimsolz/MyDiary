@@ -360,6 +360,10 @@ article a {
   font-family: 'Rock Salt', serif;
 }
 
+figure img {
+  width: 100%;
+}
+
 #story img{
 	padding-right: 20px;
 }

@@ -16,7 +16,8 @@
 		"max-len": 0,
 		"no-undef": 0,
 		"no-plusplus": [2, { allowForLoopAfterthoughts: true }],
-		"no-unused-vars": 0
+		"no-unused-vars": 0,
+		"array-callback-return": 0
 	},
 	"parserOptions": {
 		"ecmaVersion": 6
