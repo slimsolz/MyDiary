@@ -2,8 +2,7 @@ const baseUrl = 'http://localhost:3000/api/v1';
 const createElement = element => document.createElement(element);
 const append = (parent, child) => parent.appendChild(child);
 
-function deleteEntry(entryId) {
-  const token = `Bearer ${localStorage.token}`;
+function deleteEntry(entryId, token) {
   const answer = confirm('Are You Sure??');
   if (answer) {
     fetch(`${baseUrl}/entries/${entryId}`, {
@@ -49,6 +48,7 @@ function load() {
           h2.innerHTML = title;
           p.innerHTML = story.substring(0, 15);
           editbtn.innerHTML = 'Edit';
+          editbtn.href = `edit_entry.html?id=${id}`;
           deletebtn.innerHTML = 'Delete';
           append(buttonDiv, editbtn);
           append(buttonDiv, deletebtn);
@@ -60,7 +60,7 @@ function load() {
           append(figure, buttonDiv);
           append(article, figure);
           append(content, article);
-          deletebtn.onclick = () => deleteEntry(id);
+          deletebtn.onclick = () => deleteEntry(id, token);
         });
       } else {
         displayMessage(result.message, 'error');
