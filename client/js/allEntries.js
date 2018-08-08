@@ -2,6 +2,17 @@ const baseUrl = 'http://localhost:3000/api/v1';
 const createElement = element => document.createElement(element);
 const append = (parent, child) => parent.appendChild(child);
 
+const container = document.getElementById('content');
+const modalDiv = document.getElementById('myModal');
+const modalContent = createElement('div');
+const closeSpan = createElement('span');
+const h1 = createElement('h1');
+const storyParagraph = createElement('p');
+const btnRow = createElement('div');
+const modalBtn = createElement('div');
+const editBtn = createElement('a');
+const deleteBtn = createElement('button');
+
 function deleteEntry(entryId, token) {
   const answer = confirm('Are You Sure??');
   if (answer) {
@@ -15,7 +26,7 @@ function deleteEntry(entryId, token) {
           displayMessage(result.message);
           setTimeout(() => {
             location.reload(true);
-          }, 3000);
+          }, 30)
         } else {
           displayMessage(result.message, 'error');
         }
@@ -24,8 +35,60 @@ function deleteEntry(entryId, token) {
   }
 }
 
+function showEntry(id, token, e) {
+  e.preventDefault();
+  modalContent.setAttribute('class', 'modal-content');
+  closeSpan.setAttribute('class', 'close');
+  h1.setAttribute('id', 'story-title');
+  storyParagraph.setAttribute('id', 'story');
+  btnRow.setAttribute('class', 'row');
+  modalBtn.setAttribute('class', 'modal_buttons');
+  editBtn.innerHTML = 'Edit';
+  deleteBtn.innerHTML = 'Delete';
+  closeSpan.innerHTML = '&times;';
+  deleteBtn.setAttribute('id', 'delete');
+  append(modalBtn, editBtn);
+  append(modalBtn, deleteBtn);
+  append(btnRow, modalBtn);
+  append(modalContent, closeSpan);
+  append(modalContent, h1);
+  append(modalContent, storyParagraph);
+  append(modalContent, btnRow);
+  append(modalDiv, modalContent);
+
+  fetch(`${baseUrl}/entries/${id}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', Authorization: token }
+  })
+    .then(response => response.json())
+    .then((entry) => {
+      if (entry.status === 'success') {
+        const innerstory = `<img src="images/miss_u.jpg" width="300" height="300" align="left"> ${entry.entry.story}`;
+        h1.innerHTML = entry.entry.title;
+        storyParagraph.innerHTML = innerstory;
+        editBtn.href = `edit_entry.html?id=${id}`;
+        deleteBtn.onclick = () => deleteEntry(id, token);
+      } else {
+        displayMessage(entry.message, 'error');
+      }
+    })
+    .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
+
+  modalDiv.style.display = 'block';
+}
+
+closeSpan.onclick = () => {
+  modalDiv.style.display = 'none';
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = (event) => {
+  if (event.target === modalDiv) {
+    modalDiv.style.display = 'none';
+  }
+};
+
 function load() {
-  const container = document.getElementById('content');
   const token = `Bearer ${localStorage.token}`;
   fetch(`${baseUrl}/entries`, {
     method: 'GET',
@@ -56,11 +119,12 @@ function load() {
           editbtn.setAttribute('class', 'btn btn-edit');
           deletebtn.setAttribute('class', 'btn btn-delete');
           h2.innerHTML = title;
-          p.innerHTML = story.substring(0, 72);
+          p.innerHTML = story.substring(0, 20);
           editbtn.innerHTML = 'Edit';
           editbtn.href = `edit_entry.html?id=${id}`;
           deletebtn.innerHTML = 'Delete';
           deletebtn.style.cursor = 'pointer';
+          a.style.cursor = 'pointer';
           append(buttonDiv, editbtn);
           append(buttonDiv, deletebtn);
           append(figcaption, h2);
@@ -71,6 +135,7 @@ function load() {
           append(figure, buttonDiv);
           append(article, figure);
           append(content, article);
+          a.onclick = () => showEntry(id, token, event);
           deletebtn.onclick = () => deleteEntry(id, token);
         });
       } else {
