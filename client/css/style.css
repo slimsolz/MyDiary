@@ -387,6 +387,7 @@ figure img {
 #delete {
 	background-color: red;
 	color: white;
+  cursor: pointer;
 }
 
 #new_form, #edit_form {

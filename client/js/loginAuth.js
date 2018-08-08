@@ -26,8 +26,6 @@ const signin = (e) => {
       } else {
         displayMessage(newUser.message, 'error');
       }
-
-      form.email.value = '';
       form.pass.value = '';
     })
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
