@@ -24,13 +24,12 @@ const addNewEntry = (e) => {
     .then((newEntry) => {
       if (newEntry.status === 'success') {
         displayMessage(newEntry.message);
+        form.title.value = '';
+        form.category.value = '';
+        form.story.value = '';
       } else {
         displayMessage(newEntry.message, 'error');
       }
-
-      form.title.value = '';
-      form.category.value = '';
-      form.story.value = '';
     })
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
 };

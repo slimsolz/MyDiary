@@ -43,13 +43,12 @@ function editEntry(e) {
     .then((updatedEntry) => {
       if (updatedEntry.status === 'success') {
         displayMessage(updatedEntry.message);
+        form.title.value = '';
+        form.category.value = '';
+        form.story.value = '';
       } else {
         displayMessage(updatedEntry.message, 'error');
       }
-
-      form.title.value = '';
-      form.category.value = '';
-      form.story.value = '';
     })
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
 }

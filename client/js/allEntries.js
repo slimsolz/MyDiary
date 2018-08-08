@@ -9,7 +9,17 @@ function deleteEntry(entryId, token) {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json', Authorization: token }
     })
-      .then(data => location.reload(true))
+      .then(response => response.json())
+      .then((result) => {
+        if (result.status === 'success') {
+          displayMessage(result.message);
+          setTimeout(() => {
+            location.reload(true);
+          }, 3000);
+        } else {
+          displayMessage(result.message, 'error');
+        }
+      })
       .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
   }
 }
@@ -37,7 +47,7 @@ function load() {
           const p = createElement('p');
           const buttonDiv = createElement('div');
           const editbtn = createElement('a');
-          const deletebtn = createElement('button');
+          const deletebtn = createElement('a');
           img.src = 'images/miss_u.jpg';
           img.alt = 'Missing you';
           article.setAttribute('class', 'col-4 col-m-2 col-s-4');
@@ -46,10 +56,11 @@ function load() {
           editbtn.setAttribute('class', 'btn btn-edit');
           deletebtn.setAttribute('class', 'btn btn-delete');
           h2.innerHTML = title;
-          p.innerHTML = story.substring(0, 15);
+          p.innerHTML = story.substring(0, 72);
           editbtn.innerHTML = 'Edit';
           editbtn.href = `edit_entry.html?id=${id}`;
           deletebtn.innerHTML = 'Delete';
+          deletebtn.style.cursor = 'pointer';
           append(buttonDiv, editbtn);
           append(buttonDiv, deletebtn);
           append(figcaption, h2);
