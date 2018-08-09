@@ -26,4 +26,35 @@ function getUserProfile() {
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
 }
 
+function editUserProfile(e) {
+  e.preventDefault();
+  const firstname = profile.firstname.value;
+  const lastname = profile.lastname.value;
+  const sex = profile.sex.value;
+  const bio = profile.about.value;
+  const notification = profile.notification.value;
+
+  fetch(`${baseUrl}/account`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', Authorization: token },
+    body: JSON.stringify({
+      firstname,
+      lastname,
+      sex,
+      bio,
+      notification
+    })
+  })
+    .then(response => response.json())
+    .then((updatedUser) => {
+      if (updatedUser.status === 'success') {
+        displayMessage(updatedUser.message);
+      } else {
+        displayMessage(updatedUser.message, 'error');
+      }
+    })
+    .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
+}
+
 window.load = getUserProfile();
+document.onsubmit = editUserProfile;
