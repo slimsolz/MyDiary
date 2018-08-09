@@ -23,9 +23,16 @@
       <div class="row">
         <div class="col-12">
           <section class="profile">
+            <div class="" id="display">
+              <p id="alert"></p>
+            </div>
             <fieldset>
               <legend>Profile</legend>
-              <form class="profile_form">
+              <form class="profile_form" id="profile_form">
+                <div>
+                <label for="email" class="col-3">Email:</label>
+                <input type="text" name="email" required disabled id="email" class="profile-input col-8">
+              </div>
               <div>
                 <label for="firstname" class="col-3">First Name:</label>
                 <input type="text" name="firstname" id="firstname" class="profile-input col-8">
@@ -35,27 +42,21 @@
                 <input type="text" name="lastname" id="lastname" class="profile-input col-8">
               </div>
               <div>
-                <label for="email" class="col-3">Email:</label>
-                <input type="text" name="email" id="email" class="profile-input col-8">
-              </div>
-              <div>
                 <label for="sex" class="col-3">Sex:</label>
                 <div class="profile-input no-border col-8">
-                  <input type="radio" name="sex" id="male" value="M"> Male
-                  <input type="radio" name="sex" id="female" value="F"> Female
+                  <input type="radio" name="sex" id="male" value="0"> Male
+                  <input type="radio" name="sex" id="female" value="1"> Female
                 </div>
               </div>
               <div>
                 <label for="About" class="col-3">About me:</label>
-                <textarea class="profile-input col-8"></textarea>
+                <textarea name="about" class="profile-input col-8"></textarea>
               </div>
               <div>
-                <label for="sex" class="col-3">reminder:</label>
+                <label for="notification" class="col-3">Reminder:</label>
                 <div class="profile-input no-border col-8">
-                  <input type="radio" name="notification" value="12">12 PM Daily
-                <input type="radio" name="notification" value=""> Weekly
-                <input type="radio" name="notification" value=""> Once a month
-                <input type="radio" name="notification" checked value="0"> None
+                  <input type="radio" name="notification" value="1">Yes
+                  <input type="radio" name="notification" checked value="0"> No
                 </div>
               </div>
              
@@ -74,6 +75,7 @@
       &copy; 2018 | MyDiary
     </footer>
 
-    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src="js/profile.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
   </body>
 </html>
