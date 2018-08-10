@@ -20,7 +20,7 @@ function getUserProfile() {
         profile.about.value = bio;
         profile.notification.value = notification;
       } else {
-        displayMessage(entry.message, 'error');
+        displayMessage(user.message, 'error');
       }
     })
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
