@@ -26,7 +26,7 @@ function deleteEntry(entryId, token) {
           displayMessage(result.message);
           setTimeout(() => {
             location.reload(true);
-          }, 30)
+          }, 30);
         } else {
           displayMessage(result.message, 'error');
         }

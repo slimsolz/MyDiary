@@ -107,7 +107,7 @@ describe('validate Users', () => {
 
   it('should return 401, User not logged in', (done) => {
     chai.request(app)
-      .get('/api/v1/account/profile')
+      .get('/api/v1/account')
       .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI3MTM3NjQ2LCJleHAiOjE1MjcyMjQwNDZ9.0J2YZ8LAUpEnauDvl21U2OjHIQjRBzR70PlLVvNPD9o')
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -221,7 +221,7 @@ describe('validate params', () => {
 describe('validate users profile', () => {
   it('should return 400 if password contains space', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         password: '1 2 3',
@@ -240,7 +240,7 @@ describe('validate users profile', () => {
 
   it('should return 400 if password is less than 5 characters provided', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         password: '123',
@@ -258,7 +258,7 @@ describe('validate users profile', () => {
   });
   it('should return 400 if firstname not provided', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         firstname: ' ',
@@ -275,7 +275,7 @@ describe('validate users profile', () => {
   });
   it('should return 400 if lastname not provided', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         firstname: 'doe',
@@ -292,7 +292,7 @@ describe('validate users profile', () => {
   });
   it('should return 400 if sex not provided', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         firstname: 'doe',
@@ -309,7 +309,7 @@ describe('validate users profile', () => {
   });
   it('should return 400 if bio not provided', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         firstname: 'doe',
@@ -326,7 +326,7 @@ describe('validate users profile', () => {
   });
   it('should return 400 if notification not provided', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         firstname: 'doe',
@@ -343,7 +343,7 @@ describe('validate users profile', () => {
   });
   it('should return 400 if values are not strings', (done) => {
     chai.request(app)
-      .put('/api/v1/account/profile')
+      .put('/api/v1/account')
       .set('Authorization', `Bearer ${anodaToken}`)
       .send({
         firstname: 1234,

@@ -1,6 +1,8 @@
 const baseUrl = 'http://localhost:3000/api/v1';
 const id = parseInt(window.location.search.substring(4), 10);
 const token = `Bearer ${localStorage.token}`;
+const form = document.forms.modify_form;
+
 
 function getEntry() {
   fetch(`${baseUrl}/entries/${id}`, {
@@ -10,7 +12,6 @@ function getEntry() {
     .then(response => response.json())
     .then((entry) => {
       if (entry.status === 'success') {
-        const form = document.forms.modify_form;
         form.title.value = entry.entry.title;
         form.category.value = entry.entry.category;
         form.story.value = entry.entry.story;
@@ -23,7 +24,6 @@ function getEntry() {
 
 function editEntry(e) {
   e.preventDefault();
-  const form = document.forms.modify_form;
   const title = form.title.value;
   const category = form.category.value;
   const image = 'images/miss_u.jpg';

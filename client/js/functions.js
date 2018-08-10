@@ -19,3 +19,14 @@ const displayMessage = (message, type = 'success') => {
     document.getElementById('display').className = '';
   }, 4000);
 };
+
+const logout = document.getElementById('logout');
+
+if (logout) {
+  logout.style.cursor = 'pointer';
+  logout.onclick = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = 'index.html';
+  };
+}
