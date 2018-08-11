@@ -21,7 +21,7 @@ const signup = (e) => {
     })
       .then(response => response.json())
       .then((newUser) => {
-        if (newUser.status === 'success') {
+        if (newUser.code === 201) {
           window.localStorage.token = newUser.token;
           displayMessage(newUser.message);
           setTimeout(() => {

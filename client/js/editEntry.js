@@ -15,6 +15,11 @@ function getEntry() {
         form.title.value = entry.entry.title;
         form.category.value = entry.entry.category;
         form.story.value = entry.entry.story;
+      } else if (entry.code === 401) {
+        displayMessage(entry.message, 'error');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1000);
       } else {
         displayMessage(entry.message, 'error');
       }
@@ -46,6 +51,11 @@ function editEntry(e) {
         form.title.value = '';
         form.category.value = '';
         form.story.value = '';
+      } else if (updatedEntry.code === 401) {
+        displayMessage(updatedEntry.message, 'error');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1000);
       } else {
         displayMessage(updatedEntry.message, 'error');
       }

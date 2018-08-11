@@ -11,6 +11,7 @@ export default class Middleware {
       if (err) {
         return res.status(401).json({
           status: 'error',
+          code: 401,
           message: 'User not logged in'
         });
       }
@@ -26,6 +27,7 @@ export default class Middleware {
     if (!id || (Math.sign(reqId) === -1)) {
       return res.status(400).json({
         status: 'error',
+        code: 400,
         message: 'Invalid parameter'
       });
     }
@@ -63,6 +65,7 @@ export default class Middleware {
 
     return res.status(400).json({
       status: 'error',
+      code: 400,
       errors
     });
   }
@@ -91,6 +94,7 @@ export default class Middleware {
 
     return res.status(400).json({
       status: 'error',
+      code: 400,
       errors
     });
   }
@@ -121,6 +125,7 @@ export default class Middleware {
 
     return res.status(400).json({
       status: 'error',
+      code: 400,
       errors
     });
   }

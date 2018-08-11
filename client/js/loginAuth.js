@@ -17,7 +17,7 @@ const signin = (e) => {
   })
     .then(response => response.json())
     .then((newUser) => {
-      if (newUser.status === 'success') {
+      if (newUser.code === 200) {
         window.localStorage.token = newUser.token;
         displayMessage(newUser.message);
         setTimeout(() => {

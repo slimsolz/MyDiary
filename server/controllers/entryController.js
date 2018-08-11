@@ -26,6 +26,7 @@ export default class EntryController {
       if (entryFound.rowCount !== 0) {
         return res.status(409).json({
           status: 'error',
+          code: 409,
           message: 'Entry already exists'
         });
       }
@@ -36,6 +37,7 @@ export default class EntryController {
         client.end();
         return res.status(201).json({
           status: 'success',
+          code: 201,
           message: 'Entry saved successfully',
           entry: {
             title: createdEntry.rows[0].title,
@@ -66,6 +68,7 @@ export default class EntryController {
       if (entryFound.rowCount === 0) {
         return res.status(404).json({
           status: 'error',
+          code: 404,
           message: 'Entry not found'
         });
       }
@@ -75,6 +78,7 @@ export default class EntryController {
       if (!Helper.confirmUpdateDate(createdat, today)) {
         return res.status(403).json({
           status: 'error',
+          code: 403,
           message: 'Entry cannot be updated anymore'
         });
       }
@@ -84,6 +88,7 @@ export default class EntryController {
         client.end();
         return res.json({
           status: 'success',
+          code: 200,
           message: 'Entry updated successfully',
           updated_entry: {
             title: updatedEntry.rows[0].title,
@@ -111,6 +116,7 @@ export default class EntryController {
       if (entryFound.rowCount === 0) {
         return res.status(404).json({
           status: 'error',
+          code: 404,
           message: 'Entry not found'
         });
       }
@@ -120,6 +126,7 @@ export default class EntryController {
         client.end();
         return res.status(200).json({
           status: 'success',
+          code: 200,
           message: `${result.rowCount} entry deleted`
         });
       });
@@ -140,6 +147,7 @@ export default class EntryController {
       if (entriesFound.rowCount === 0) {
         return res.status(200).json({
           status: 'success',
+          code: 200,
           message: 'No entry available'
         });
       }
@@ -167,12 +175,14 @@ export default class EntryController {
       if (entryFound.rowCount === 0) {
         return res.status(404).json({
           status: 'error',
+          code: 404,
           message: 'Entry not found'
         });
       }
 
       return res.json({
         status: 'success',
+        code: 200,
         message: 'Entry reterived',
         entry: {
           title: entryFound.rows[0].title,

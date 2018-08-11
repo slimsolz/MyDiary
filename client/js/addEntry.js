@@ -22,11 +22,16 @@ const addNewEntry = (e) => {
   })
     .then(response => response.json())
     .then((newEntry) => {
-      if (newEntry.status === 'success') {
+      if (newEntry.code === 201) {
         displayMessage(newEntry.message);
         form.title.value = '';
         form.category.value = '';
         form.story.value = '';
+      } else if (newEntry.code === 401) {
+        displayMessage(newEntry.message, 'error');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1000);
       } else {
         displayMessage(newEntry.message, 'error');
       }
