@@ -17,12 +17,14 @@ const signin = (e) => {
   })
     .then(response => response.json())
     .then((newUser) => {
-      if (newUser.status === 'success') {
+      if (newUser.code === 200) {
         window.localStorage.token = newUser.token;
         displayMessage(newUser.message);
         setTimeout(() => {
           window.location.replace('entries.html');
         }, 4000);
+      } else if (newUser.code === 400 && newUser.errors) {
+        displayMessage(newUser.errors.message, 'error');
       } else {
         displayMessage(newUser.message, 'error');
       }

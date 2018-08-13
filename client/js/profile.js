@@ -9,7 +9,7 @@ function getUserProfile() {
   })
     .then(response => response.json())
     .then((user) => {
-      if (user.status === 'success') {
+      if (user.code === 200) {
         const {
           email, firstname, lastname, sex, bio, notification
         } = user.profile;
@@ -19,8 +19,11 @@ function getUserProfile() {
         profile.sex.value = sex;
         profile.about.value = bio;
         profile.notification.value = notification;
-      } else {
+      } else if (user.code === 401) {
         displayMessage(user.message, 'error');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1000);
       }
     })
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
@@ -47,8 +50,13 @@ function editUserProfile(e) {
   })
     .then(response => response.json())
     .then((updatedUser) => {
-      if (updatedUser.status === 'success') {
+      if (updatedUser.code === 200) {
         displayMessage(updatedUser.message);
+      } else if (updatedUser.code === 401) {
+        displayMessage(updatedUser.message, 'error');
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1000);
       } else {
         displayMessage(updatedUser.message, 'error');
       }

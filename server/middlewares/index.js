@@ -11,6 +11,7 @@ export default class Middleware {
       if (err) {
         return res.status(401).json({
           status: 'error',
+          code: 401,
           message: 'User not logged in'
         });
       }
@@ -26,6 +27,7 @@ export default class Middleware {
     if (!id || (Math.sign(reqId) === -1)) {
       return res.status(400).json({
         status: 'error',
+        code: 400,
         message: 'Invalid parameter'
       });
     }
@@ -40,21 +42,21 @@ export default class Middleware {
     } = req.body;
 
     if (typeof email !== 'string') {
-      errors.email = 'Must be a string';
+      errors.message = 'Must be a string';
     } else if (!email || (email && !validator.isEmail(email))) {
-      errors.email = 'Enter a valid email';
+      errors.message = 'Enter a valid email';
     }
 
     if (typeof password !== 'string') {
-      errors.password = 'Must be a string';
+      errors.message = 'Must be a string';
     } else if (!password) {
-      errors.password = 'password cannot be empty';
+      errors.message = 'password cannot be empty';
     } else if (password && password.includes(' ')) {
-      errors.password = 'password cannot contain spaces';
+      errors.message = 'password cannot contain spaces';
     }
 
     if (password.length < 5) {
-      errors.password = 'password must be more than 5 characters';
+      errors.message = 'password must be more than 5 characters';
     }
 
     if (isEmpty(errors)) {
@@ -63,6 +65,7 @@ export default class Middleware {
 
     return res.status(400).json({
       status: 'error',
+      code: 400,
       errors
     });
   }
@@ -76,13 +79,13 @@ export default class Middleware {
     if (typeof title !== 'string' || typeof category !== 'string' || typeof image !== 'string' || typeof story !== 'string') {
       errors.message = 'values must be a text';
     } else if (!title || (title && validator.isEmpty(title.trim()))) {
-      errors.title = 'Title is required';
+      errors.message = 'Title is required';
     } else if (!category || (category && validator.isEmpty(category.trim()))) {
-      errors.category = 'Category is required';
+      errors.message = 'Category is required';
     } else if (!image || (image && validator.isEmpty(image.trim()))) {
-      errors.image = 'Image is required';
+      errors.message = 'Image is required';
     } else if (!story || (story && validator.isEmpty(story.trim()))) {
-      errors.story = 'Story is required';
+      errors.message = 'Story is required';
     }
 
     if (isEmpty(errors)) {
@@ -91,6 +94,7 @@ export default class Middleware {
 
     return res.status(400).json({
       status: 'error',
+      code: 400,
       errors
     });
   }
@@ -102,11 +106,11 @@ export default class Middleware {
     } = req.body;
 
     if (password && password.includes(' ')) {
-      errors.password = 'password cannot contain spaces';
+      errors.message = 'password cannot contain spaces';
     }
 
     if (password && (password.length < 5)) {
-      errors.password = 'password must be more than 5 characters';
+      errors.message = 'password must be more than 5 characters';
     }
 
     if ((firstname && typeof firstname !== 'string') || (lastname && typeof lastname !== 'string') || (sex && typeof sex !== 'string') || (bio && typeof bio !== 'string') || (notification && typeof notification !== 'string')) {
@@ -121,6 +125,7 @@ export default class Middleware {
 
     return res.status(400).json({
       status: 'error',
+      code: 400,
       errors
     });
   }

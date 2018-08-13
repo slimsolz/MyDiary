@@ -26,6 +26,7 @@ export default class UserController {
       if (result.rowCount !== 0) {
         return res.status(409).json({
           status: 'error',
+          code: 409,
           message: 'Account already exists'
         });
       }
@@ -39,6 +40,7 @@ export default class UserController {
         const token = jwt.sign({ id }, process.env.SECRET, { expiresIn: '3h' });
         return res.status(201).json({
           status: 'success',
+          code: 201,
           message: 'Your account has been created successfully and logged in....redirecting',
           token,
           user: {
@@ -67,6 +69,7 @@ export default class UserController {
       if (user.rowCount === 0) {
         return res.status(401).json({
           status: 'error',
+          code: 401,
           message: 'Incorrect Email or password'
         });
       }
@@ -75,6 +78,7 @@ export default class UserController {
       if (!correctPassword) {
         return res.status(401).json({
           status: 'error',
+          code: 401,
           message: 'Incorrect Email or password'
         });
       }
@@ -82,6 +86,7 @@ export default class UserController {
       const token = jwt.sign({ id: user.rows[0].id }, process.env.SECRET, { expiresIn: '3h' });
       return res.status(200).json({
         status: 'success',
+        code: 200,
         message: 'logged in',
         token,
         user: {
@@ -110,6 +115,7 @@ export default class UserController {
 
       return res.status(200).json({
         status: 'success',
+        code: 200,
         message: 'User profile reterived',
         profile: {
           email,
@@ -144,6 +150,7 @@ export default class UserController {
         client.end();
         return res.status(200).json({
           status: 'success',
+          code: 200,
           message: 'Profile updated successfully',
           user: {
             email: updatedUser.rows[0].email,
