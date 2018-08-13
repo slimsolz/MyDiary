@@ -23,6 +23,8 @@ const signin = (e) => {
         setTimeout(() => {
           window.location.replace('entries.html');
         }, 4000);
+      } else if (newUser.code === 400 && newUser.errors) {
+        displayMessage(newUser.errors.message, 'error');
       } else {
         displayMessage(newUser.message, 'error');
       }

@@ -154,6 +154,7 @@ export default class EntryController {
 
       return res.json({
         status: 'success',
+        code: 200,
         message: 'All entries',
         entries: entriesFound.rows
       });

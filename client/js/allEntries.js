@@ -63,8 +63,11 @@ function showEntry(id, token, e) {
     .then(response => response.json())
     .then((entry) => {
       if (entry.code === 200) {
-        const innerstory = `<img src="images/miss_u.jpg" width="300" height="300" align="left"> ${entry.entry.story}`;
-        h1.innerHTML = entry.entry.title;
+        const {
+          title, image, story
+        } = entry.entry;
+        const innerstory = `<img src="${image}" width="300" height="300" align="left"> ${story}`;
+        h1.innerHTML = title;
         storyParagraph.innerHTML = innerstory;
         editBtn.href = `edit_entry.html?id=${id}`;
         deleteBtn.onclick = () => deleteEntry(id, token);
@@ -116,7 +119,7 @@ function load() {
           const buttonDiv = createElement('div');
           const editbtn = createElement('a');
           const deletebtn = createElement('a');
-          img.src = 'images/miss_u.jpg';
+          img.src = image;
           img.alt = 'Missing you';
           article.setAttribute('class', 'col-4 col-m-2 col-s-4');
           a.setAttribute('class', 'link');
