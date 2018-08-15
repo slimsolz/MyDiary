@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import config from '../config/config';
 
 export default class Helper {
   static encryptPassword(password) {

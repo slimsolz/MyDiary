@@ -113,10 +113,14 @@ export default class Middleware {
       errors.message = 'password must be more than 5 characters';
     }
 
-    if ((firstname && typeof firstname !== 'string') || (lastname && typeof lastname !== 'string') || (sex && typeof sex !== 'string') || (bio && typeof bio !== 'string') || (notification && typeof notification !== 'string')) {
+    if ((firstname && typeof firstname !== 'string') || (lastname && typeof lastname !== 'string') || (bio && typeof bio !== 'string')) {
       errors.message = 'values must be a text';
-    } else if ((firstname && validator.isEmpty(firstname.trim())) || (lastname && validator.isEmpty(lastname.trim())) || (sex && validator.isEmpty(sex.trim())) || (bio && validator.isEmpty(bio.trim())) || (notification && validator.isEmpty(notification.trim()))) {
+    } else if ((firstname && validator.isEmpty(firstname.trim())) || (lastname && validator.isEmpty(lastname.trim())) || (bio && validator.isEmpty(bio.trim()))) {
       errors.message = 'values cannot be empty';
+    }
+
+    if ((typeof sex !== 'boolean') || (typeof notification !== 'boolean')) {
+      errors.message = 'values cannot be null';
     }
 
     if (isEmpty(errors)) {

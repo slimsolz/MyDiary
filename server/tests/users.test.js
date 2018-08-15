@@ -124,9 +124,9 @@ describe('PUT /account', () => {
       .send({
         firstname: 'John',
         lastname: 'Doe',
-        sex: 'M',
+        sex: true,
         bio: 'my bio',
-        notification: 'daily'
+        notification: false
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
