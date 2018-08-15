@@ -120,7 +120,7 @@ export default class Middleware {
     }
 
     if ((typeof sex !== 'boolean') || (typeof notification !== 'boolean')) {
-      errors.message = 'values cannot be null';
+      errors.message = 'values must be a boolean';
     }
 
     if (isEmpty(errors)) {
