@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1';
+const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
 const loginForm = document.getElementById('login_form');
 
 const signin = (e) => {

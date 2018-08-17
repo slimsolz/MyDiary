@@ -1,7 +1,9 @@
-const baseUrl = 'http://localhost:3000/api/v1';
+const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
 const createElement = element => document.createElement(element);
 const append = (parent, child) => parent.appendChild(child);
 
+const noEntry = document.getElementById('no_entry');
+const newLink = document.getElementById('newLink');
 const container = document.getElementById('content');
 const modalDiv = document.getElementById('myModal');
 const modalContent = createElement('div');
@@ -152,7 +154,9 @@ function load() {
           window.location.href = 'login.html';
         }, 1000);
       } else {
-        displayMessage(result.message, 'error');
+        noEntry.innerHTML = 'No Entry Yet .... Add An Entry';
+        newLink.style.backgroundColor = '#4CAF50';
+        newLink.style.color = 'white';
       }
     })
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));

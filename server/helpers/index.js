@@ -46,9 +46,9 @@ export default class Helper {
       const mailOptions = {
         from: 'MyDiary',
         to: users,
-        subject: 'Reminder test',
+        subject: 'Entry Reminder',
         html: `<h3 style="grey: white;padding: .5em;">MY DIARY</h3>
-        <div style="padding: .5em;">Reminder to add a new entry to your diary</div>
+        <div style="padding: .5em;">Hey, <br>This is a quick reminder to add a new entry to your diary</div>
         <p style="padding: .5em;"><b>**Note if you are not subscribed to MyDiary, please ignore this mail.</p>`,
       };
 
@@ -56,7 +56,6 @@ export default class Helper {
         if (error) {
           return console.log(error);
         }
-        console.log(`Message ${info.messageId}, ${info.response}`);
       });
     });
   }

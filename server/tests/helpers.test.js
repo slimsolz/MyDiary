@@ -1,4 +1,5 @@
 import chai from 'chai';
+import nodemailer from 'nodemailer';
 import Helper from '../helpers/index';
 
 const { expect } = chai;
@@ -16,4 +17,7 @@ it('should return false if entry can be updated again', () => {
   const result = Helper.confirmUpdateDate(created, today);
 
   expect(result).to.be.equal(false);
+});
+
+it('should successfully send mail', () => {
 });
