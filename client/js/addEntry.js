@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1';
+const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dhscfltvv/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'q30emqym';
 const addNewForm = document.getElementById('add_new_form');

@@ -240,6 +240,8 @@ footer {
 	background-color: #072e73;
   border-top: 1px solid #072e73;
 	color: white;
+  width: 100%;
+  position: absolute;
 }
 
 #entriesList {

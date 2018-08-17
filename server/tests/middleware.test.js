@@ -227,9 +227,9 @@ describe('validate users profile', () => {
         password: '1 2 3',
         firstname: 'john',
         lastname: 'doe',
-        sex: 'm',
+        sex: true,
         bio: 'short bio',
-        notification: 'daily'
+        notification: true
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -246,9 +246,9 @@ describe('validate users profile', () => {
         password: '123',
         firstname: 'john',
         lastname: 'doe',
-        sex: 'm',
+        sex: true,
         bio: 'short bio',
-        notification: 'daily'
+        notification: true
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -263,9 +263,9 @@ describe('validate users profile', () => {
       .send({
         firstname: ' ',
         lastname: 'doe',
-        sex: 'm',
+        sex: true,
         bio: 'short bio',
-        notification: 'daily'
+        notification: true
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -280,9 +280,9 @@ describe('validate users profile', () => {
       .send({
         firstname: 'doe',
         lastname: ' ',
-        sex: 'm',
+        sex: true,
         bio: 'short bio',
-        notification: 'daily'
+        notification: true
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -299,7 +299,7 @@ describe('validate users profile', () => {
         lastname: 'john',
         sex: ' ',
         bio: 'short bio',
-        notification: 'daily'
+        notification: true
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -314,9 +314,9 @@ describe('validate users profile', () => {
       .send({
         firstname: 'doe',
         lastname: 'john',
-        sex: 'm',
+        sex: true,
         bio: ' ',
-        notification: 'daily'
+        notification: true
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -331,7 +331,7 @@ describe('validate users profile', () => {
       .send({
         firstname: 'doe',
         lastname: 'john',
-        sex: 'm',
+        sex: true,
         bio: 'short bio',
         notification: ' '
       })
@@ -348,9 +348,9 @@ describe('validate users profile', () => {
       .send({
         firstname: 1234,
         lastname: 'john',
-        sex: 'm',
+        sex: true,
         bio: 'short bio',
-        notification: 55
+        notification: true
       })
       .end((err, res) => {
         expect(res).to.have.status(400);

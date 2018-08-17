@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/v1';
+const baseUrl = 'https://mydiary-v1.herokuapp.com/api/v1';
 const signupForm = document.getElementById('signup_form');
 
 const signup = (e) => {
@@ -33,6 +33,7 @@ const signup = (e) => {
 
         form.email.value = '';
         form.pass.value = '';
+        form.pass2.value = '';
       })
       .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
   }
