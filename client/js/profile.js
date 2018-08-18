@@ -29,13 +29,15 @@ function getUserProfile() {
     .catch(err => displayMessage('Connection Error. Please try again', 'serverError'));
 }
 
+const checkBool = s => (s === 'true');
+
 function editUserProfile(e) {
   e.preventDefault();
   const firstname = profile.firstname.value;
   const lastname = profile.lastname.value;
-  const sex = profile.sex.value;
+  const sex = checkBool(profile.sex.value);
   const bio = profile.about.value;
-  const notification = profile.notification.value;
+  const notification = checkBool(profile.notification.value);
 
   fetch(`${baseUrl}/account`, {
     method: 'PUT',
