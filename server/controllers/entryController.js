@@ -66,6 +66,13 @@ export default class EntryController {
     };
 
     client.query(findEntryQuery, (err, entryFound) => {
+      if (err) {
+        return res.status(500).json({
+          status: 'error',
+          message: `Find Query before update ${err}`
+        });
+      }
+
       if (entryFound.rowCount === 0) {
         return res.status(404).json({
           status: 'error',
@@ -87,6 +94,12 @@ export default class EntryController {
       const updateEntryQuery = `UPDATE entries SET title = '${title}', category = '${category}', image = '${image}', story = '${story}' WHERE id = ${entryId} AND userId = ${userId} RETURNING *`;
       client.query(updateEntryQuery, (error, updatedEntry) => {
         client.end();
+        if (error) {
+          return res.status(500).json({
+            status: 'error',
+            message: `Update query ${error}`
+          });
+        }
         return res.json({
           status: 'success',
           code: 200,
