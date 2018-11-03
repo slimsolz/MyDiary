@@ -4,7 +4,7 @@
   "description": "\u001b[2~\u001b[2~An online journal where users can pen down their thoughts and feelings",
   "main": "app.js",
   "scripts": {
-    "start": "node server/app.js",
+    "start": "babel-node server/app.js",
     "start-dev": "nodemon server/app.js --exec babel-node",
     "build": "babel server -d server/dist --ignore server/dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
