@@ -13,3 +13,5 @@ coverage/
 .env
 
 test.html
+
+.vscode/
