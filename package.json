@@ -4,9 +4,11 @@
   "description": "\u001b[2~\u001b[2~An online journal where users can pen down their thoughts and feelings",
   "main": "app.js",
   "scripts": {
-    "start": "babel-node server/app.js",
+    "start": "export NODE_ENV=production && node server/dist/app.js",
+    "clean": "rm -rf server/dist/ && mkdir server/dist/",
+    "heroku-postbuild": "npm run build",
     "start-dev": "nodemon server/app.js --exec babel-node",
-    "build": "babel server -d server/dist --ignore server/dist",
+    "build": "npm run clean && babel server -d server/dist --ignore server/dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
     "pretest": "export NODE_ENV=test || SET \"NODE_ENV=test\" && npm run db-migrate",
     "test": "export NODE_ENV=test SECRET=testsecret || SET \"NODE_ENV=test\" SECRET=testsecret &&  nyc --reporter=html --reporter=text mocha server/tests/ --exit --compilers js:babel-core/register",
